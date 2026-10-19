@@ -15,7 +15,7 @@ python3 scripts/package.py --pdf build/main/main.pdf
 
 | 文件 | 用途 |
 | --- | --- |
-| `scholarship-beamer-overleaf.zip` | 一个完整源码包，可导入 Overleaf；含完整字体、素材、文档与预览 |
+| `scholarship-beamer-overleaf.zip` | 完整源码包，适用于 Prism、TeXPage、Overleaf 或本地；含字体、素材、文档与预览 |
 | `scholarship-beamer.pdf` | 独立的完整示例 PDF，不塞进源码 ZIP |
 | `SHA256SUMS.txt` | ZIP 与 PDF 的 SHA-256 校验值 |
 
@@ -25,11 +25,13 @@ python3 scripts/package.py --pdf build/main/main.pdf
 
 1. 核对 README 的用途、文件名、预览与当前 PDF 一致；逐页检查没有遗漏的真实个人信息或未经说明的素材。
 2. 将 ZIP 解压到干净目录，从该目录执行 `python3 scripts/build.py`，检查完整 PDF、缺字、图片和目录跳转。
-3. 若更改了编译入口、TeX、字体或图片，从 README 的 Overleaf 按钮导入并检查编译。当前完整示例已知在免费账号超时，README 必须保留简短的使用限制与本地方案；详细日志留在内部报告。仅文档改动可以沿用相同有效源码的云端结果，不重复导入。不能把导入成功当作在线编译成功，也不能把增加付费时限当作已测试付费账号。
+3. 若更改了编译入口、TeX、字体或图片，按 README 的 Prism 和 TeXPage 步骤导入完整 ZIP，编译后下载 PDF 核对；Overleaf 已知的免费超时限制继续如实保留。仅文档变化且有效源码、字体、图片相同时，可沿用对应版本的云端实测，不重复导入。导入成功不等于编译成功，付费方案的能力也不等于已实测。
 4. 核对代码 MIT、字体 OFL、建筑与示例图片的单独声明，以及学校标识的独立权利说明；替换素材时同步来源记录。
-5. 按项目所有者对当前版本的授权进行 GitHub 推送和公开，不重复索取已有授权。每个版本上传上述三个文件；下载链接应指向实际存在的版本附件。保留旧版本，不覆盖其附件来伪装为新构建。
+5. 按项目所有者对当前版本的授权进行 GitHub 推送和公开。每个版本上传上述三个文件；核对标签、源码 ZIP 内 README 与仓库该版本完全一致，服务器附件 SHA-256 与本地一致。保留旧版本，不覆盖其附件。
 
-## Overleaf 按钮
+## 在线入口与版本附件
+
+README 的 Prism 入口跳转到本页使用教程，再由读者进入自己的工作区并上传 ZIP；TeXPage 也按手动上传处理。不要将私人测试项目放入公开 README，或把工作区主页写成自动导入模板的链接。源码附件保留既有文件名，以免破坏已有下载链接。
 
 README 使用以下版本附件地址：
 
