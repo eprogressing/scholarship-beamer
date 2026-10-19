@@ -1,4 +1,4 @@
-# 素材与许可（南开单包候选）
+# 素材与许可
 
 README 新增四校封面对照图 `preview/schools.jpg`，来自项目已有封面预览；四校建筑改编与标识的对应署名见 [CREDITS.md](CREDITS.md)。联系二维码 `preview/wechat-qr.png` 为作者提供的原图，仅作联系入口，不属于示例图库的 CC0 范围。预览图不因收录在仓库中而统一变为代码 MIT 许可。
 
