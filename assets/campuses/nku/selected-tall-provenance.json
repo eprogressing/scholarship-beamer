@@ -1,0 +1,30 @@
+{
+  "status": "Current selected AI-assisted building illustration; contributor-held rights licensed under CC BY-SA 4.0",
+  "tool": "built-in image_gen.imagegen",
+  "input": "User attachment codex-clipboard-7171325f-99f0-4b1e-9055-e6fa08a6c46b.png",
+  "input_sha256": "66dfbd0ae6b1d6f9bffdef49bb27689f51ad95201747ae5f41860552d2189572",
+  "previous_chain": "Earlier simplified generation used purchased illustration as style reference and Amazingloong CC BY-SA 4.0 real photo as architectural reference. This edit uses the user-selected generated image, retaining central pavilion.",
+  "edit": "Lengthened two upper tower sections, lifted lanterns/masts; central pavilion retained; not whole-image stretch",
+  "asset": "panorama-selected-tall.png",
+  "asset_sha256": "db66d0da6e0089f0ec312b3877cc05593645512292677c296ec2eac55b95b768",
+  "prompt": "selected-tall-edit-prompt.txt",
+  "redistribution_clearance_asserted": false,
+  "visual_final_approval_asserted": false,
+  "author_clarification_2026_10_19": "The project author confirms that the current illustration was AI-generated using publicly available images, rather than directly distributing the purchased illustration. Earlier generation and reference records are retained separately.",
+  "publication_license_for_current_artwork": {
+    "identifier": "CC-BY-SA-4.0",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "file": "assets/BUILDING-LICENSE.txt",
+    "legal_code_file": "assets/licenses/CC-BY-SA-4.0.txt",
+    "scope": "Only Copyright and Similar Rights held by and licensable by Scholarship Beamer contributors; no third-party-rights clearance or universal AI-copyrightability assertion",
+    "date": "2026-10-19"
+  },
+  "clearance_scope_note": "redistribution_clearance_asserted=false records that complete third-party-rights clearance is not asserted; it does not negate the contributor-held-rights licence granted above.",
+  "reference_photo": {
+    "creator": "Amazingloong",
+    "title": "Main Building of Nankai University 2015-08-04.jpg",
+    "url": "https://commons.wikimedia.org/wiki/File:Main_Building_of_Nankai_University_2015-08-04.jpg",
+    "license": "CC-BY-SA-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  }
+}

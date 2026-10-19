@@ -1,0 +1,368 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{campus-core}[2026/10/18 v1.0.0 Nankai presentation theme]
+\RequirePackage{iftex}
+\ifXeTeX\else\PackageError{Campus}{Please select XeLaTeX}{This theme uses bundled CJK fonts.}\fi
+\RequirePackage{fontspec}
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{calc,positioning,arrows.meta}
+\geometry{paperwidth=256mm,paperheight=144mm}
+\setbeamersize{text margin left=13mm,text margin right=13mm}
+% WenKai is the body family for both CJK and Latin text.
+% Real Medium provides upright emphasis; no synthetic bold or italic.
+\setmainfont[Path=fonts/,BoldFont=LXGWWenKai-Medium.ttf,
+  ItalicFont=LXGWWenKai-Medium.ttf,BoldItalicFont=LXGWWenKai-Medium.ttf]{LXGWWenKai-Regular.ttf}
+\setsansfont[Path=fonts/,BoldFont=LXGWWenKai-Medium.ttf,
+  ItalicFont=LXGWWenKai-Medium.ttf,BoldItalicFont=LXGWWenKai-Medium.ttf]{LXGWWenKai-Regular.ttf}
+\setmonofont[BoldFont=texgyrecursor-bold.otf,ItalicFont=texgyrecursor-italic.otf,
+  BoldItalicFont=texgyrecursor-bolditalic.otf]{texgyrecursor-regular.otf}
+\setCJKmainfont[Path=fonts/,BoldFont=LXGWWenKai-Medium.ttf,
+  ItalicFont=LXGWWenKai-Medium.ttf,BoldItalicFont=LXGWWenKai-Medium.ttf]{LXGWWenKai-Regular.ttf}
+\setCJKsansfont[Path=fonts/,BoldFont=LXGWWenKai-Medium.ttf,
+  ItalicFont=LXGWWenKai-Medium.ttf,BoldItalicFont=LXGWWenKai-Medium.ttf]{LXGWWenKai-Regular.ttf}
+\setCJKmonofont[Path=fonts/,BoldFont=LXGWWenKai-Medium.ttf,
+  ItalicFont=LXGWWenKai-Medium.ttf,BoldItalicFont=LXGWWenKai-Medium.ttf]{LXGWWenKai-Regular.ttf}
+\setCJKfamilyfont{nkuBrush}[Path=fonts/]{MaShanZheng-Regular.ttf}
+\setCJKfamilyfont{nkuSerif}[Path=fonts/]{SourceHanSerifCN-SemiBold.otf}
+\setCJKfamilyfont{nkuWenKai}[Path=fonts/]{LXGWWenKai-Regular.ttf}
+\newfontfamily\NKUCoverLatin[Path=fonts/]{LXGWWenKai-Regular.ttf}
+\newcommand\NKUCoverTextFont{\NKUCoverLatin\CJKfamily{nkuWenKai}}
+\setCJKfamilyfont{nkuWenKaiMedium}[Path=fonts/]{LXGWWenKai-Medium.ttf}
+\newfontfamily\NKUCoverInfoLatin[Path=fonts/]{LXGWWenKai-Medium.ttf}
+\newcommand\NKUCoverInfoFont{\NKUCoverInfoLatin\CJKfamily{nkuWenKaiMedium}}
+% Keep the full WenKai font as the brush-title fallback; no glyph subsetting.
+\setCJKfallbackfamilyfont{nkuBrush}[Path=fonts/]{LXGWWenKai-Regular.ttf}
+\xeCJKsetup{AutoFallBack=true}
+\newcommand\NKUTitleFont{\CJKfamily{\nku@titlefamily}}
+\definecolor{NKUPurple}{HTML}{743481}
+\definecolor{NKUDark}{HTML}{54245A}
+\definecolor{NKULilac}{HTML}{CDB2D5}
+\definecolor{NKUPale}{HTML}{F5F0F7}
+\definecolor{NKUInk}{HTML}{28242B}
+\definecolor{NKUGray}{HTML}{6F6874}
+\definecolor{NKUGold}{HTML}{BB8955}
+\setbeamercolor{normal text}{fg=NKUInk,bg=white}
+\setbeamercolor{structure}{fg=NKUPurple}
+\setbeamercolor{frametitle}{fg=NKUDark}
+\setbeamercolor{alerted text}{fg=NKUPurple}
+\setbeamerfont{normal text}{size=\fontsize{16}{24}\selectfont}
+\setbeamerfont{frametitle}{series=\bfseries,size=\fontsize{23}{29}\selectfont}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{itemize item}{\raisebox{.15ex}{\tiny$\blacksquare$}}
+\setbeamertemplate{itemize subitem}{\textendash}
+\setlength\parskip{1mm}
+\AtBeginDocument{\raggedright\fontsize{16}{24}\selectfont}
+\hypersetup{colorlinks=true,urlcolor=NKUPurple,linkcolor=NKUPurple}
+\pgfkeys{/nku/.is family,/nku,
+ title/.store in=\nku@title,subtitle/.store in=\nku@subtitle,
+ author/.store in=\nku@author,institute/.store in=\nku@institute,
+ major/.store in=\nku@major,date/.store in=\nku@date,
+ advisor/.store in=\nku@advisor,occasion/.store in=\nku@occasion,
+ shorttitle/.store in=\nku@shorttitle,
+ titlefont/.is choice,titlefont/brush/.code={\def\nku@titlefamily{nkuBrush}},
+ titlefont/serif/.code={\def\nku@titlefamily{nkuSerif}}}
+\newcommand\NKUsetup[1]{\pgfqkeys{/nku}{#1}}
+\newcommand\NKUauthor{\nku@author}
+\newcommand\NKUinstitute{\nku@institute}
+\newcommand\NKUmajor{\nku@major}
+\NKUsetup{title=汇报标题,subtitle=\CampusSchool,author=姓名,
+ institute=学院名称,major=专业名称,date=\today,advisor=,
+ occasion=,shorttitle=\CampusSchool,titlefont=brush}
+\newenvironment{NKUcanvas}{\begin{tikzpicture}[remember picture,overlay]
+ \begin{scope}[shift={(current page.south west)},x=\paperwidth,y=\paperheight]
+ \clip (0,0) rectangle (1,1);
+}{\end{scope}\end{tikzpicture}}
+\newcommand\nku@gradient{%
+ \shade[left color=NKUPurple,right color=NKUPurple!70!white,
+   shading angle=22] (0,0) rectangle (1,1);
+ \fill[NKUDark,opacity=.10] (0,.979) rectangle (1,1);}
+\newcommand\nku@whitebrand[1]{\includegraphics[width=\dimexpr#1*237/340\relax]{assets/nankai-brand.pdf}}
+\newcommand\nku@seal[1]{\includegraphics[width=#1]{assets/nankai-seal.jpg}}
+\newsavebox\nku@covermeasure
+\newsavebox\nku@framemeasure
+\newsavebox\nku@framesubmeasure
+\newsavebox\nku@chaptermeasure
+
+\newcommand\NKUcover{%
+ \sbox\nku@covermeasure{\parbox{.91\paperwidth}{\centering
+  \NKUTitleFont\fontsize{58}{68}\selectfont\nku@title}}
+ \def\nku@coversize{58}\def\nku@coverleading{68}\def\nku@covertop{.80}
+ \ifdim\dimexpr\ht\nku@covermeasure+\dp\nku@covermeasure\relax>24mm
+  \def\nku@coversize{34}\def\nku@coverleading{42}\def\nku@covertop{.825}
+ \fi
+ \begin{frame}[plain,noframenumbering]
+ \begin{NKUcanvas}
+  \nku@gradient
+  \node[anchor=north,inner sep=0] at (.5,.945) {\nku@whitebrand{.175\paperwidth}};
+  \node[anchor=north,text=white,align=center,text width=.91\paperwidth,
+    inner sep=0,font=\NKUTitleFont\fontsize{\nku@coversize}{\nku@coverleading}\selectfont]
+    at (.5,\nku@covertop) {\nku@title};
+  \node[anchor=north,text=white,align=center,text width=.86\paperwidth,
+    inner sep=0,font=\NKUCoverTextFont\fontsize{17}{25}\selectfont]
+    at (.5,.625) {\nku@subtitle};
+  \node[anchor=north,text=black,align=center,text width=.72\paperwidth,
+    inner sep=0,font=\NKUCoverInfoFont\fontsize{14}{23}\selectfont]
+    at (.5,.465) {答辩人：\nku@author\hspace{9mm}院系：\nku@institute\\[2mm]
+      专业：\nku@major\hspace{9mm}日期：\nku@date};
+  \node[anchor=south,inner sep=0] at (.5,0)
+    {\includegraphics[width=\paperwidth]{assets/campus-panorama.pdf}};
+  \ifx\nku@occasion\@empty\else
+   \node[anchor=south,text=white,opacity=.9,font=\NKUCoverTextFont\fontsize{9}{12}\selectfont,
+    inner sep=0] at (.5,.315) {\nku@occasion};
+  \fi
+ \end{NKUcanvas}
+ \end{frame}}
+
+% Native Beamer sections are the single source for the agenda and PDF links.
+\newcommand\NKUtocnote[2]{\expandafter\gdef\csname nku@tocnote@#1\endcsname{#2}}
+\newsavebox\nku@tocmeasure
+\newcount\nku@toccount
+\def\nku@counttocline#1#2#3#4#5{\global\advance\nku@toccount by 1}
+\def\nku@checktocline#1#2#3#4#5{%
+ \ifcsname nku@tocnote@#1\endcsname
+ \sbox\nku@tocmeasure{\parbox{.225\paperwidth}{\NKUCoverInfoFont
+   \fontsize{\nku@toctitlesize}{29}\selectfont #2}}%
+ \ifdim\dimexpr\ht\nku@tocmeasure+\dp\nku@tocmeasure\relax>.085\paperheight
+  \PackageWarning{Campus}{Agenda title is too long; use a short section name}%
+ \fi
+ \sbox\nku@tocmeasure{\parbox{.195\paperwidth}{\NKUCoverTextFont
+   \fontsize{\nku@tocnotesize}{18}\selectfont\csname nku@tocnote@#1\endcsname}}%
+ \ifdim\dimexpr\ht\nku@tocmeasure+\dp\nku@tocmeasure\relax>.085\paperheight
+  \PackageWarning{Campus}{Agenda note exceeds two lines; shorten the chapter subtitle}%
+ \fi
+ \fi
+}
+\def\nku@drawtocline#1#2#3#4#5{%
+ \pgfmathsetmacro\nku@rowy{\nku@tocfirst-(#1-1)*\nku@tocstep}
+ \node[anchor=west,text=NKUPurple!48,inner sep=0,
+   font=\NKUCoverInfoFont\fontsize{\nku@tocnumsize}{36}\selectfont]
+   at (.425,\nku@rowy) {\ifnum#1<10 0\fi#1};
+ \ifcsname nku@tocnote@#1\endcsname
+ \node[anchor=west,text=NKUDark,inner sep=0,align=left,text width=.225\paperwidth,
+   font=\NKUCoverInfoFont\fontsize{\nku@toctitlesize}{29}\selectfont]
+   at (.50,\nku@rowy) {\hyperlink{Navigation#3}{#2}};
+ \node[anchor=west,text=NKUGray,inner sep=0,align=left,text width=.195\paperwidth,
+   font=\NKUCoverTextFont\fontsize{\nku@tocnotesize}{18}\selectfont]
+   at (.74,\nku@rowy) {\csname nku@tocnote@#1\endcsname};
+ \else
+ \node[anchor=west,text=NKUDark,inner sep=0,align=left,text width=.43\paperwidth,
+   font=\NKUCoverInfoFont\fontsize{\nku@toctitlesize}{29}\selectfont]
+   at (.50,\nku@rowy) {\hyperlink{Navigation#3}{#2}};
+ \fi
+ \draw[NKUPurple!16,line width=.4pt] (.415,\nku@rowy-.052)--(.95,\nku@rowy-.052);
+}
+\newcommand\NKUcontents{%
+ \begingroup
+ \global\nku@toccount=0
+ \begingroup\makeatletter
+  \let\beamer@sectionintoc\nku@counttocline
+  \InputIfFileExists{\jobname.toc}{}{}
+ \endgroup
+ \ifnum\nku@toccount>8\PackageWarning{Campus}{Agenda exceeds 8 sections; split it into parts}\fi
+  \def\nku@toctitlesize{24}\def\nku@tocnumsize{26}\def\nku@tocnotesize{13.5}
+  \def\nku@tocfirst{.79}
+  \pgfmathsetmacro\nku@tocstep{.64/max(1,\the\nku@toccount-1)}
+  \ifnum\nku@toccount<5
+   \def\nku@toctitlesize{26}\def\nku@tocnumsize{33}\def\nku@tocnotesize{14}
+   \def\nku@tocfirst{.72}\def\nku@tocstep{.16}
+  \fi
+  \ifnum\nku@toccount>6
+   \def\nku@toctitlesize{22}\def\nku@tocnumsize{28}\def\nku@tocnotesize{12.5}
+  \fi
+ \begingroup\makeatletter
+  \let\beamer@sectionintoc\nku@checktocline
+  \InputIfFileExists{\jobname.toc}{}{}
+ \endgroup
+ \begin{frame}[plain,noframenumbering]
+ \begin{NKUcanvas}
+  \fill[white] (0,0) rectangle (1,1);
+  \begin{scope}
+   \clip (0,0) rectangle (.36,1);
+   \nku@gradient
+   \node[anchor=south west,inner sep=0] at (-.015,0)
+    {\includegraphics[height=.66\paperheight]{assets/campus-panorama.pdf}};
+  \end{scope}
+  \node[anchor=north west,text=white,font=\NKUTitleFont\fontsize{46}{54}\selectfont,
+    inner sep=0] at (.055,.89) {目录};
+  \node[anchor=north west,text=white,opacity=.6,font=\fontsize{15}{20}\selectfont,
+    inner sep=0] at (.062,.75) {CONTENTS};
+  % Same 34mm brand, 6mm right and 2mm top margins as the profile page.
+  \node[anchor=north east,inner sep=0,outer sep=0] at (.9765625,.9861111)
+    {\CampusBrand{34mm}{NKUPurple}};
+  \begingroup\makeatletter
+   \let\beamer@sectionintoc\nku@drawtocline
+   \InputIfFileExists{\jobname.toc}{}{}
+  \endgroup
+ \end{NKUcanvas}
+ \end{frame}
+ \endgroup}
+
+\newcommand\NKUchapter[1]{%
+ \sbox\nku@chaptermeasure{\parbox{.66\paperwidth}{\raggedleft\fontsize{21}{29}\selectfont #1}}
+ \def\nku@chapterdescsize{21}\def\nku@chapterdescleading{29}\def\nku@chapterrule{.31}
+ \ifdim\dimexpr\ht\nku@chaptermeasure+\dp\nku@chaptermeasure\relax>13mm
+  \def\nku@chapterdescsize{17}\def\nku@chapterdescleading{24}\def\nku@chapterrule{.24}
+ \fi
+ \begin{frame}[plain,noframenumbering]
+ \begin{NKUcanvas}
+  \nku@gradient
+  \node[anchor=north,inner sep=0] at (.5,.93) {\nku@whitebrand{.15\paperwidth}};
+  \node[anchor=west,text=white,opacity=.25,font=\fontsize{154}{164}\selectfont,
+    inner sep=0] at (.055,.48) {\ifnum\thesection<10 0\fi\thesection};
+  \node[anchor=south east,text=white,align=flush right,text width=.61\paperwidth,
+    inner sep=0,font=\NKUTitleFont\fontsize{64}{74}\selectfont] at (.93,.46)
+    {\hypersetup{linkcolor=white}\insertsectionhead};
+  \node[anchor=north east,text=white,align=flush right,text width=.66\paperwidth,
+    inner sep=0,font=\fontsize{\nku@chapterdescsize}{\nku@chapterdescleading}\selectfont] at (.93,.41) {#1};
+  \draw[white,line width=.7pt] (.07,\nku@chapterrule) -- (.93,\nku@chapterrule);
+ \end{NKUcanvas}
+ \end{frame}}
+% Optional short agenda note preserves room for longer chapter subtitles.
+\newcommand\NKUsection[3][]{\section{#2}%
+ \def\nku@tocdescription{#1}%
+ \ifx\nku@tocdescription\@empty
+  \addtocontents{toc}{\protect\NKUtocnote{\thesection}{\unexpanded{#3}}}%
+ \else
+  \addtocontents{toc}{\protect\NKUtocnote{\thesection}{\unexpanded{#1}}}%
+ \fi
+ \NKUchapter{#3}}
+
+\setbeamertemplate{frametitle}{%
+ \sbox\nku@framemeasure{\parbox{.81\paperwidth}{\raggedright\bfseries
+  \fontsize{22}{28}\selectfont\insertframetitle}}
+ \def\nku@headerline{21mm}\def\nku@headerreserve{12mm}
+ \def\nku@subtitletop{17mm}
+ \ifdim\dimexpr\ht\nku@framemeasure+\dp\nku@framemeasure\relax>12mm
+  \def\nku@headerline{29mm}\def\nku@headerreserve{20mm}
+  \def\nku@subtitletop{25mm}
+ \fi
+ \ifdim\dimexpr\ht\nku@framemeasure+\dp\nku@framemeasure\relax>22mm
+  \PackageWarning{Campus}{Frame title exceeds two lines; shorten it}
+ \fi
+ % Native Beamer subtitles stay with the title, above the separator.
+ \ifx\insertframesubtitle\@empty\else
+  \sbox\nku@framesubmeasure{\parbox{.81\paperwidth}{\raggedright
+   \fontsize{11}{15}\selectfont\insertframesubtitle}}%
+  \ifdim\dimexpr\ht\nku@framesubmeasure+\dp\nku@framesubmeasure\relax>6.5mm
+   \PackageWarning{Campus}{Frame subtitle exceeds one line; shorten it}%
+  \fi
+  \edef\nku@headerline{\the\dimexpr\nku@headerline+3mm\relax}%
+  \edef\nku@headerreserve{\the\dimexpr\nku@headerreserve+3mm\relax}%
+ \fi
+ \begin{tikzpicture}[remember picture,overlay]
+  \node[anchor=north west,inner sep=0,text=NKUDark,align=left,
+   text width=.81\paperwidth,font=\bfseries\fontsize{22}{28}\selectfont]
+   at ([xshift=13mm,yshift=-6.5mm]current page.north west) {\raggedright\insertframetitle};
+  \ifx\insertframesubtitle\@empty\else
+   \node[anchor=north west,inner sep=0,text=NKUGray,align=left,
+    text width=.81\paperwidth,font=\fontsize{11}{15}\selectfont]
+    at ([xshift=13mm,yshift=-\nku@subtitletop]current page.north west) {\insertframesubtitle};
+  \fi
+  \node[anchor=north east,inner sep=0] at ([xshift=-13mm,yshift=-5mm]current page.north east)
+    {\nku@seal{9mm}};
+  \draw[NKUPurple!18,line width=.4pt]
+   ([xshift=13mm,yshift=-\nku@headerline]current page.north west)--
+   ([xshift=-13mm,yshift=-\nku@headerline]current page.north east);
+ \end{tikzpicture}\vspace{\nku@headerreserve}}
+\setbeamertemplate{footline}{%
+ \hbox{\begin{beamercolorbox}[wd=.9\paperwidth,ht=4mm,dp=2mm,leftskip=13mm]{normal text}
+  {\color{NKUGray}\fontsize{8}{10}\selectfont\nku@author}
+ \end{beamercolorbox}\begin{beamercolorbox}[wd=.1\paperwidth,ht=4mm,dp=2mm]{normal text}
+  {\color{NKUPurple}\fontsize{9}{11}\selectfont\insertframenumber}
+ \end{beamercolorbox}}}
+
+\newcommand\NKUlabel[1]{\par\vspace{1mm}{\color{NKUPurple}\bfseries\fontsize{17}{23}\selectfont #1}\par\vspace{1mm}}
+\newcommand\NKUtakeaway[1]{\par\vspace{2mm}{\color{NKUDark}\bfseries\fontsize{20}{28}\selectfont #1}\par\vspace{3mm}}
+\newcommand\NKUnote[1]{\par\vspace{2mm}{\color{NKUGray}\fontsize{10}{15}\selectfont #1}\par}
+\newcommand\NKUmetric[3]{\begin{minipage}[t]{.30\linewidth}\raggedright
+ {\color{NKUPurple}\fontsize{35}{40}\selectfont #1}\par\vspace{1mm}
+ {\bfseries\fontsize{15}{20}\selectfont #2}\par
+ {\color{NKUGray}\fontsize{11}{17}\selectfont #3}\end{minipage}}
+\newcommand\NKUplaceholder[2]{%
+ \par\begingroup\setlength\fboxsep{0pt}%
+ \noindent\colorbox{NKUPale}{\parbox[c][#2][c]{\linewidth}{\centering\color{NKUPurple!65}#1}}%
+ \par\endgroup}
+\newcount\nku@timelinecount
+\newcommand\NKUtimeline[1]{%
+ \global\nku@timelinecount=0
+ \foreach \yr/\head/\desc in {#1}{\global\advance\nku@timelinecount by 1}
+ \ifnum\nku@timelinecount>6\PackageWarning{Campus}{Timeline exceeds 6 entries; split it across slides}\fi
+ \begin{tikzpicture}[x=\linewidth,y=1mm]
+  \pgfmathsetmacro\nku@eventfirst{.5/max(1,\the\nku@timelinecount)}
+  \pgfmathsetlengthmacro\nku@eventwidth{.9*\linewidth/max(1,\the\nku@timelinecount)}
+  \draw[NKUPurple!35,line width=1pt] (\nku@eventfirst,0)--({1-\nku@eventfirst},0);
+  \foreach \yr/\head/\desc [count=\i] in {#1}{
+   \pgfmathsetmacro\nku@eventx{(\i-.5)/\the\nku@timelinecount}
+   \fill[NKUPurple] (\nku@eventx,0) circle (1.5mm);
+   \node[anchor=south,text=NKUPurple,font=\bfseries\fontsize{20}{25}\selectfont]
+     at (\nku@eventx,8) {\yr};
+   \node[anchor=north,align=center,text width=\nku@eventwidth,
+     font=\fontsize{16}{22}\selectfont] at (\nku@eventx,-8) {\head};
+   \node[anchor=north,align=center,text width=\nku@eventwidth,text=NKUGray,
+     font=\fontsize{11}{17}\selectfont] at (\nku@eventx,-23) {\desc};
+  }
+ \end{tikzpicture}}
+% Dense editable content pages share the approved profile/research header.
+\newcommand\NKUdetailpage[2]{%
+ \begin{frame}[plain]
+ \begin{tikzpicture}[remember picture,overlay]
+ \begin{scope}[shift={(current page.north west)},x=1mm,y=-1mm,
+  every node/.append style={outer sep=0}]
+ \clip (0,0) rectangle (256,144);
+ \fill[NKUPurple] (0,3) rectangle (2.6,12.3);
+ \node[anchor=north west,inner sep=0,text=NKUPurple,
+  font=\bfseries\fontsize{9.5}{13}\selectfont] at (5,3.1)
+  {\CampusSchool\enspace ·\enspace \NKUinstitute};
+ \node[anchor=north west,inner sep=0,text=NKUInk,
+  font=\bfseries\fontsize{12}{16}\selectfont] at (5,8.1)
+  {\ifnum\thesection<10 0\fi\thesection\enspace \insertsectionhead\enspace ·\enspace #1};
+ \node[anchor=north east,inner sep=0] at (250,2)
+  {\CampusBrand{34mm}{NKUPurple}};
+ #2%
+ \node[text=NKUPurple,inner sep=0,font=\fontsize{8.5}{11}\selectfont]
+  at (128,140) {\insertframenumber};
+ \end{scope}\end{tikzpicture}\end{frame}}
+\newcommand\NKUdetailband[4]{%
+ \shade[left color=NKUPale,right color=white] (#1,#2) rectangle ({#1+#3},{#2+6.5});
+ \fill[NKUPurple!65] (#1,#2) rectangle ({#1+1.3},{#2+6.5});
+ \node[anchor=west,inner sep=0,text=NKUPurple,
+  font=\bfseries\fontsize{12.5}{16}\selectfont] at ({#1+4},{#2+3.25}) {#4};}
+\newcommand\NKUstorytitle[3]{%
+ \shade[left color=NKUPale,right color=white] (11.5,18) rectangle (250,31);
+ \fill[NKUPurple!65] (11.5,18) rectangle (12.8,31);
+ \node[anchor=north west,inner sep=0,text=NKUDark,text width=180mm,
+  font=\bfseries\fontsize{16}{20}\selectfont] at (15.5,18.5) {#1};
+ \node[anchor=north east,inner sep=0,text=NKUGray,
+  font=\fontsize{9.8}{13}\selectfont] at (248,19.5) {#3};
+ \node[anchor=north west,inner sep=0,text=NKUInk,text width=230mm,
+  font=\fontsize{10.5}{14}\selectfont] at (15.5,26) {#2};}
+\newcommand\NKUexamplefoot[1]{%
+ \node[anchor=north west,inner sep=0,text=NKUGray,
+  font=\fontsize{8.1}{11}\selectfont] at (11.5,137.5) {#1};}
+% Scene photos are 3:2; crop natively to fill without distortion.
+\newcommand\NKUphototile[6]{%
+ \begin{scope}[shift={(#1,#2)},rotate=#6,transform shape]
+  \fill[NKUInk,opacity=.10] ({-#3/2+.7},{-#4/2+.9}) rectangle ({#3/2+.7},{#4/2+.9});
+  \fill[white] ({-#3/2-1},{-#4/2-1}) rectangle ({#3/2+1},{#4/2+1});
+  \begin{scope}
+   \clip ({-#3/2},{-#4/2}) rectangle ({#3/2},{#4/2});
+   \pgfmathsetmacro\nku@photowidth{max(#3,1.5*(#4))}
+   \node[inner sep=0] at (0,0) {\includegraphics[width=\nku@photowidth mm]{#5}};
+  \end{scope}
+ \end{scope}}
+\newcommand\NKUending{%
+ \begin{frame}[plain,noframenumbering]
+ \begin{NKUcanvas}
+  \nku@gradient
+  \node[anchor=north,inner sep=0] at (.5,.91) {\nku@whitebrand{.17\paperwidth}};
+  \node[text=white,font=\NKUTitleFont\fontsize{51}{61}\selectfont,
+   align=center,text width=.8\paperwidth,inner sep=0] at (.5,.66) {感谢聆听\quad 敬请指正};
+  \node[text=white,font=\fontsize{16}{23}\selectfont,inner sep=0] at (.5,.51) {\nku@author\quad\nku@institute};
+  \node[anchor=south,inner sep=0] at (.5,0)
+   {\includegraphics[width=\paperwidth]{assets/campus-panorama.pdf}};
+ \end{NKUcanvas}\end{frame}}
+\endinput

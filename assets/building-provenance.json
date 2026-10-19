@@ -1,0 +1,88 @@
+{
+  "generation_tool": "built-in imagegen",
+  "date": "2026-10-18",
+  "subject": "Decorative bilateral views of Nankai Main Building; not a literal photographic panorama",
+  "reference": {
+    "title": "Main Building of Nankai University 2015-08-04.jpg",
+    "author": "Amazingloong",
+    "source": "https://commons.wikimedia.org/wiki/File:Main_Building_of_Nankai_University_2015-08-04.jpg",
+    "license": "CC-BY-SA-4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "file": "assets/main-building-reference.jpg",
+    "sha256": "517e8c841675e902ad04b72317adce2886b6be5b294da094fabd39b69ce47b50",
+    "dimensions": [
+      960,
+      650
+    ],
+    "copy_note": "Downscaled photographic reference, not the original-resolution Commons file."
+  },
+  "purchased_illustration_used_as_image_input": false,
+  "generation_image_inputs": [
+    "licensed real photograph only in initial generation"
+  ],
+  "refinement_image_inputs": [
+    "newly generated architectural illustration only in each edit"
+  ],
+  "artwork": "assets/campus-building-outlined.png",
+  "artwork_sha256": "39b0955d5bb7ba8bde842be349f86dbceccd6c4f16be18ecb1131a0ac73e9029",
+  "dimensions": [
+    2169,
+    725
+  ],
+  "transparent_alpha": true,
+  "changes": [
+    "two inward-facing tower views in a warm comic illustration style",
+    "simplified cream/apricot walls and orange-brown window linework",
+    "continuous receding wings meet at a shallow central inward corner",
+    "thin white outline; no separate front-facing central pavilion",
+    "lighter cream surfaces, warm brighter window recesses, reduced dark interior contour weight"
+  ],
+  "prompt_files": [
+    "assets/building-redraw-prompt.txt",
+    "assets/building-refinement-prompt.txt",
+    "assets/building-comic-prompt.txt",
+    "assets/building-join-prompt.txt",
+    "assets/building-warmth-prompt.txt"
+  ],
+  "artwork_license": "CC-BY-SA-4.0 to the extent applicable rights subsist",
+  "license_notice": "assets/BUILDING-LICENSE.txt",
+  "pdf_layout": {
+    "width_bp": 2169,
+    "height_bp": 695,
+    "bottom_padding_clipped_bp": 17,
+    "top_padding_clipped_bp": 13,
+    "raster_pixels_edited": false
+  },
+  "raster_pixels_edited_outside_imagegen": false,
+  "zero_infringement_guarantee": false,
+  "limits": [
+    "Licensed-photo-based AI re-illustration is not a claim of independently cleared architectural or trademark rights.",
+    "AI generation and changing colors do not by themselves establish copyright clearance.",
+    "Attribution, source and license are supplied in this package and the default main PDF subject metadata."
+  ],
+  "style": "Luminous vanilla-cream and apricot campus comic illustration, warm midtone windows and fine terracotta linework",
+  "chain": [
+    {
+      "step": "licensed-photo-based generation",
+      "prompt": "assets/building-redraw-prompt.txt"
+    },
+    {
+      "step": "edge refinement",
+      "prompt": "assets/building-refinement-prompt.txt"
+    },
+    {
+      "step": "comic rendering and warmer palette",
+      "prompt": "assets/building-comic-prompt.txt"
+    },
+    {
+      "step": "rebuild central wing into a connected inward corner",
+      "prompt": "assets/building-join-prompt.txt"
+    },
+    {
+      "step": "brighter vanilla/apricot palette and lighter interior ink, existing connected wings preserved",
+      "prompt": "assets/building-warmth-prompt.txt"
+    }
+  ],
+  "previous_stone_artwork_sha256": "e63307bc60107e94c2ce024343306164725279201e98d8204ab2eecc3dbb8c2b",
+  "previous_comic_artwork_sha256": "89e1732ffad47e8b247d472f6e981525d4da573758d5a5f11917528f9320dcc5"
+}

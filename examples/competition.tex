@@ -1,0 +1,218 @@
+% Ten fictional examples demonstrate the dense list; replace with your records.
+% Each record: competition / level / award / year.month.
+% The three summary counts are calculated from 国家级 / 省部级 / 校级.
+\def\NKUAwardRecords{%
+ 全国大学生数学建模竞赛/国家级/二等奖/2025.09,
+ 大学生程序设计竞赛/国家级/三等奖/2025.08,
+ 大学生计算机设计大赛/省部级/一等奖/2025.07,
+ 大学生数学竞赛/省部级/一等奖/2025.06,
+ 全国大学生英语竞赛/国家级/二等奖/2025.05,
+ 大学生创新创业竞赛/省部级/银奖/2025.04,
+ 大学生课外学术科技作品竞赛/省部级/二等奖/2025.03,
+ 大学生职业规划大赛/校级/金奖/2024.11,
+ 校园软件设计竞赛/校级/一等奖/2024.10,
+ 校园创新作品竞赛/校级/二等奖/2024.06}
+% One-based record numbers. Empty braces disable emphasis.
+\def\NKUAwardHighlights{1,3}
+% Independent wall order: record number / image path. Empty path = native sample.
+% Example: 7/{assets/my-certificate.jpg}. Keep at most six entries.
+\def\NKUAwardMaterials{1/{},2/{},3/{},4/{},5/{},6/{}}
+\newcount\NKUawardsNational
+\newcount\NKUawardsRegional
+\newcount\NKUawardsCampus
+\newsavebox\NKUAwardLineBox
+\newsavebox\NKUAwardNameBox
+\newif\ifNKUAwardHighlighted
+\makeatletter
+\newcommand\NKUawardhighlightcheck[1]{%
+ \NKUAwardHighlightedfalse
+ \@for\NKUhighlight:=\NKUAwardHighlights\do{%
+  \ifnum\NKUhighlight=#1\relax\NKUAwardHighlightedtrue\fi}}
+\makeatother
+% Balance long names instead of leaving one trailing character on line two.
+% Explicit phrase-aware lines also work in both the table and sample papers.
+\newcommand\NKUAwardNameLines[2]{\vbox{\hbox{#1}\hbox{#2}}}
+\newcommand\NKUawardnamebox[1]{%
+ \begin{pgfinterruptpicture}%
+  \sbox\NKUAwardLineBox{{\awardnamefont\fontsize{9.7}{11.5}\selectfont #1}}%
+  \dimen0=58.5mm\relax
+  \ifdim\wd\NKUAwardLineBox>58.5mm
+   \dimen0=\wd\NKUAwardLineBox\divide\dimen0 by 2
+   \advance\dimen0 by 1.75mm
+   \ifdim\dimen0>58.5mm\dimen0=58.5mm\fi
+  \fi
+  \sbox\NKUAwardNameBox{\parbox[c]{\dimen0}{%
+   \setlength\parskip{0pt}\raggedright\noindent
+   \awardnamefont\fontsize{9.7}{11.5}\selectfont #1\par}}%
+  \ifdim\wd\NKUAwardLineBox>117mm
+   \PackageError{Nankai}{Award name is too long}{Shorten the name or split this page.}\fi
+  \ifdim\dimexpr\ht\NKUAwardNameBox+\dp\NKUAwardNameBox\relax>\dimexpr\awardrowheight mm-1mm\relax
+   \PackageError{Nankai}{Award name exceeds its row}{Use at most two balanced lines with ten or fewer records; keep eleven or twelve records to one line.}\fi
+  \global\setbox\NKUAwardNameBox=\copy\NKUAwardNameBox
+ \end{pgfinterruptpicture}}
+
+% The ornamental silhouette is native TikZ, with the reference's pointed leaves.
+\input{assets/award-laurel.tex}
+\newcommand\NKUawardcount[3]{%
+ \node[fill=NKUPurple!72!NKULilac,text=white,rounded corners=3.4mm,
+  minimum width=25mm,minimum height=6.8mm,
+  font=\bfseries\fontsize{10}{13}\selectfont,
+  inner xsep=2mm,inner ysep=0] at (#1,21.5) {#2};
+ \node[text=NKUDark,font=\bfseries\fontsize{29}{32}\selectfont,
+  inner sep=0] at (#1,32.3) {#3\kern1.6mm%
+   {\mdseries\color{NKUPurple}\fontsize{10}{13}\selectfont 项}};
+ \begin{scope}[shift={({#1-18.8},24)}]
+  \NKUawardlaurelbranch
+ \end{scope}
+ \begin{scope}[shift={({#1+18.8},24)},xscale=-1]
+  \NKUawardlaurelbranch
+ \end{scope}}
+
+% Every wall tile has the same exterior; three native paper compositions inside.
+\newcommand\NKUawardpaperframe[2]{%
+ \fill[NKUInk,opacity=.08] (.45,.6) rectangle ({#1+.45},{#2+.6});
+ \fill[white] (-.45,-.45) rectangle ({#1+.45},{#2+.45});
+ \draw[NKUGray!25,line width=.25pt] (0,0) rectangle (#1,#2);}
+% x / y / width / height / wall position / competition / level / award / date.
+\newcommand\NKUawardcertificate[9]{%
+ \begin{scope}[shift={(#1,#2)}]
+  \NKUawardpaperframe{#3}{#4}
+  \pgfmathtruncatemacro\awardpaperstyle{mod(#5,3)}
+  \pgfmathsetmacro\awardbodyx{#3/2}
+  \pgfmathsetmacro\awardcertwidth{#3-10}
+  \def\awardaccent{NKUGold!75!black}%
+  \ifcase\awardpaperstyle
+   % Classical paper: inset border, open corners and a centred serif title.
+   \fill[white!96!NKUGold] (.5,.5) rectangle ({#3-.5},{#4-.5});
+   \draw[NKUGold!65,line width=.55pt] (1.2,1.2) rectangle ({#3-1.2},{#4-1.2});
+   \draw[NKUGold!35,line width=.25pt] (2,2) rectangle ({#3-2},{#4-2});
+   \draw[NKUGold!65,line width=.45pt]
+    (3,6)--(3,3)--(6,3)
+    ({#3-6},3)--({#3-3},3)--({#3-3},6)
+    (3,{#4-6})--(3,{#4-3})--(6,{#4-3})
+    ({#3-6},{#4-3})--({#3-3},{#4-3})--({#3-3},{#4-6});
+   \node[text=\awardaccent,font=\CJKfamily{nkuSerif}\fontsize{12.5}{15}\selectfont,
+    inner sep=0] at (\awardbodyx,8) {荣誉证书};
+   \draw[NKUGold!50,line width=.35pt] (6,11.3)--({#3-6},11.3);
+  \or
+   % Modern paper: a navy side band and an offset text column.
+   \def\awardaccent{blue!18!NKUGray}%
+   \fill[white!98!cyan] (.5,.5) rectangle ({#3-.5},{#4-.5});
+   \fill[\awardaccent] (.5,.5) rectangle (5.5,{#4-.5});
+   \fill[NKUGold!60] (5.5,.5) rectangle (6.3,{#4-.5});
+   \draw[\awardaccent!45,line width=.4pt] (8,2) rectangle ({#3-2},{#4-2});
+   \pgfmathsetmacro\awardbodyx{(#3+6)/2}
+   \pgfmathsetmacro\awardcertwidth{#3-15}
+   \node[text=\awardaccent,font=\CJKfamily{nkuSerif}\fontsize{12.5}{15}\selectfont,
+    inner sep=0] at (\awardbodyx,8) {获奖证书};
+   \draw[\awardaccent!35,line width=.35pt] (10,11.3)--({#3-4},11.3);
+  \or
+   % Academic paper: a full-width burgundy heading and gold bottom rule.
+   \def\awardaccent{red!22!NKUGray}%
+   \fill[white!97!NKUGold] (.5,.5) rectangle ({#3-.5},{#4-.5});
+   \fill[\awardaccent] (.5,.5) rectangle ({#3-.5},8.3);
+   \node[text=white,font=\CJKfamily{nkuSerif}\fontsize{11.5}{15}\selectfont,
+    inner sep=0] at (\awardbodyx,4.5) {荣\quad 誉\quad 证\quad 书};
+   \draw[NKUGold!80,line width=.75pt] (3,{#4-2.3})--({#3-3},{#4-2.3});
+   \draw[\awardaccent!35,line width=.3pt] (2,12.5)--(2,{#4-2.3})
+    ({#3-2},12.5)--({#3-2},{#4-2.3});
+  \fi
+  \node[text=NKUInk,font=\fontsize{5.6}{8}\selectfont,inner sep=0]
+   at (\awardbodyx,14.2) {\NKUauthor\ 同学参加};
+  \node[text=NKUInk,align=center,text width=\awardcertwidth mm,
+   font=\bfseries\fontsize{6.0}{8}\selectfont,inner sep=0]
+   at (\awardbodyx,19) {#6};
+  \node[text=\awardaccent,font=\CJKfamily{nkuSerif}\fontsize{10.5}{13}\selectfont,
+   inner sep=0] at (\awardbodyx,25.3) {#8};
+  \node[text=NKUGray,font=\fontsize{5.0}{7}\selectfont,inner sep=0]
+   at (\awardbodyx,30.3) {#7\enspace /\enspace #9};
+ \end{scope}}
+\newcommand\NKUawardscan[3]{%
+ \begin{scope}[shift={(#1,#2)}]
+  \NKUawardpaperframe{55.25}{34.5}
+  \IfFileExists{#3}{%
+   \node[inner sep=0] at (27.625,17.25)
+    {\includegraphics[width=54.05mm,height=33.3mm,keepaspectratio]{#3}};
+  }{\PackageError{Nankai}{Award material file not found: #3}{Check the image path in NKUAwardMaterials.}}%
+ \end{scope}}
+
+\NKUdetailpage{竞赛荣誉}{%
+ \def\NKUAwardCount{0}
+ \NKUawardsNational=0\relax
+ \NKUawardsRegional=0\relax
+ \NKUawardsCampus=0\relax
+ \foreach \awardname/\awardlevel/\awardrank/\awarddate [count=\idx] in \NKUAwardRecords{%
+  \xdef\NKUAwardCount{\idx}
+  \ifdefstring{\awardlevel}{国家级}{\global\advance\NKUawardsNational by 1}{}%
+  \ifdefstring{\awardlevel}{省部级}{\global\advance\NKUawardsRegional by 1}{}%
+  \ifdefstring{\awardlevel}{校级}{\global\advance\NKUawardsCampus by 1}{}%
+ }
+ \ifnum\NKUAwardCount>12
+  \PackageError{Nankai}{Awards table supports at most twelve rows}{Select representative awards or split this page.}\fi
+ \ifnum\NKUAwardCount<1
+  \PackageError{Nankai}{Awards table is empty}{Add records or remove the page.}\fi
+ \NKUawardcount{31.5}{国家级}{\the\NKUawardsNational}
+ \NKUawardcount{71.5}{省部级}{\the\NKUawardsRegional}
+ \NKUawardcount{111.5}{校级}{\the\NKUawardsCampus}
+ \draw[NKUPurple!25,line width=.45pt] (11.5,40)--(131.5,40);
+ \NKUdetailband{137.5}{18}{112.5}{获奖材料}
+
+ % Compact rows recover the ten-item density of the supplied reference.
+ \fill[NKUPurple] (11.5,43) rectangle (131.5,50);
+ \foreach \awardheadx/\awardheading in
+  {27.5/时间,68.25/竞赛名称,104.5/级别,122/奖项}{%
+  \node[text=white,font=\bfseries\fontsize{9.7}{13}\selectfont,
+   inner sep=0] at (\awardheadx,46.5) {\awardheading};}
+ \pgfmathsetmacro\awardrowheight{min(10,83/\NKUAwardCount)}
+ \foreach \awardname/\awardlevel/\awardrank/\awarddate [count=\idx from 0] in \NKUAwardRecords{%
+  \pgfmathsetmacro\awardtop{50+\idx*\awardrowheight}
+  \pgfmathsetmacro\awardcenter{\awardtop+\awardrowheight/2}
+  \ifodd\idx
+   \fill[NKUPale] (11.5,\awardtop) rectangle (131.5,{\awardtop+\awardrowheight});\fi
+  \NKUawardhighlightcheck{\numexpr\idx+1\relax}
+  \def\awardnamefont{\normalfont\color{NKUInk}}%
+  \ifNKUAwardHighlighted
+   \fill[NKUPurple!10] (11.5,\awardtop) rectangle (131.5,{\awardtop+\awardrowheight});
+   \fill[NKUPurple!65] (11.5,{\awardtop+1}) rectangle (12.2,{\awardtop+\awardrowheight-1});
+   \def\awardnamefont{\normalfont\bfseries\color{NKUDark}}%
+  \fi
+  \draw[NKUPurple!16,line width=.3pt]
+   (11.5,{\awardtop+\awardrowheight})--(131.5,{\awardtop+\awardrowheight});
+  \fill[NKUPurple] (15.7,\awardcenter) circle (1.95mm);
+  \node[text=white,inner sep=0,font=\bfseries\fontsize{6.5}{8}\selectfont]
+   at (15.7,\awardcenter) {\the\numexpr\idx+1\relax};
+  \node[text=NKUInk,inner sep=0,font=\fontsize{8.9}{11}\selectfont]
+   at (27.5,\awardcenter) {\awarddate};
+  \NKUawardnamebox{\awardname}
+  \node[anchor=west,inner sep=0] at (39,\awardcenter) {\usebox\NKUAwardNameBox};
+  \node[text=NKUInk,align=center,text width=13mm,inner sep=0,
+   font=\fontsize{9.0}{11}\selectfont] at (104.5,\awardcenter) {\awardlevel};
+  \node[text=NKUPurple,align=center,text width=17mm,inner sep=0,
+   font=\bfseries\fontsize{10}{12}\selectfont] at (122,\awardcenter) {\awardrank};
+ }
+ % The material list controls selection and order independently of the table.
+ \ifx\NKUAwardMaterials\empty\else
+  \foreach \materialrecord/\materialfile [count=\materialidx from 0] in \NKUAwardMaterials{%
+   \ifnum\materialidx>5
+    \PackageError{Nankai}{Awards wall supports at most six materials}{Remove a material entry.}\fi
+   \ifnum\materialrecord<1
+    \PackageError{Nankai}{Award material record is out of range}{Use one-based record numbers from the left table.}\fi
+   \ifnum\materialrecord>\NKUAwardCount
+    \PackageError{Nankai}{Award material record is out of range}{Update NKUAwardMaterials after deleting award records.}\fi
+   \pgfmathsetmacro\awardwallx{137.5+57.25*mod(\materialidx,2)}
+   \pgfmathsetmacro\awardwally{27+36*floor(\materialidx/2)}
+   \ifx\materialfile\empty
+    \foreach \awardname/\awardlevel/\awardrank/\awarddate [count=\recordidx] in \NKUAwardRecords{%
+     \ifnum\recordidx=\materialrecord
+      \NKUawardcertificate{\awardwallx}{\awardwally}{55.25}{34.5}{\materialidx}%
+       {\awardname}{\awardlevel}{\awardrank}{\awarddate}
+     \fi}
+   \else
+    \NKUawardscan{\awardwallx}{\awardwally}{\materialfile}
+   \fi
+  }
+ \fi
+ \node[anchor=north west,inner sep=0,text=NKUGray,
+  font=\fontsize{7.6}{10}\selectfont] at (11.5,136.8)
+  {竞赛、奖项与证书均为排版示例};
+}

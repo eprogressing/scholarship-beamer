@@ -1,0 +1,16 @@
+% !TeX program = xelatex
+% 默认示例：南开大学。Overleaf 编译器请选择 XeLaTeX，主文件选择 main.tex。
+% 第一次使用：在 settings.tex 填写姓名、学院、专业和汇报题目。
+% 换学校：仍用这个主文件，按 settings.tex 的中文注释替换配色与学校素材。
+% 正文分章节维护在 examples/，填写位置见 README.md 的页码表。
+\documentclass[aspectratio=169,12pt]{beamer}
+\usepackage[UTF8,fontset=none]{ctex}
+\usetheme{Campus}
+\input{settings.tex}
+\ifdefined\CampusTestOverrides\CampusTestOverrides\fi
+\begin{document}
+\NKUcover
+\NKUcontents
+\input{examples/content.tex}
+\NKUending
+\end{document}

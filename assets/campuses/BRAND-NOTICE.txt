@@ -1,0 +1,16 @@
+University marks — separate rights notice
+
+The seal and wordmark files assets/campuses/nku/brand.pdf and brand-white.pdf
+are university identity material. They are not covered by
+this project's MIT code licence, CC artwork licences, or CC0 example-image
+licence. Inclusion in this local review candidate does not assert university
+endorsement, trademark permission, or an open redistribution licence.
+
+Official source pages, original files, vector conversion / extraction and
+white-ink changes are recorded in brand-provenance.json. Geometry and aspect
+ratios are preserved; no AI-generated university seals are used.
+
+The NKU combination uses an official seal and Chinese vector wordmark, with
+project-set English typography. It is an unofficial project arrangement, not
+a newly approved university standard file. Other schools' trial assets are
+not included in this single-school upload package.

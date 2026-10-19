@@ -1,0 +1,171 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeCampus}[2026/10/19 v0.2 Multi-campus Beamer]
+% Stable dense-page components live in campus-core; NKU names remain compatible.
+\providecommand\CampusSchool{南开大学}
+\providecommand\CampusEnglish{NANKAI UNIVERSITY}
+\providecommand\CampusCode{NKU}
+\providecommand\CampusMotto{允公允能\kern.20em{\textperiodcentered}\kern.20em{}日新月异}
+\RequirePackage{campus-core}
+\def\campus@layout{panorama}
+\def\campus@logo{}
+\def\campus@logowhite{}
+\def\CampusArt{assets/campus-panorama.pdf}
+\def\CampusArtTrim{0 0 0 0}
+\def\CampusLandmark{主楼}
+\def\CampusCredit{Reference photograph: Amazingloong. AI-assisted architectural adaptation, CC BY-SA 4.0}
+\def\CampusSourceURL{https://commons.wikimedia.org/wiki/File:Main\string_Building\string_of\string_Nankai\string_University\string_2015-08-04.jpg}
+\def\CampusLicenseURL{https://creativecommons.org/licenses/by-sa/4.0/}
+\newcommand\CampusPalette[3]{%
+ \definecolor{NKUPurple}{HTML}{#1}%
+ \definecolor{NKUDark}{HTML}{#2}%
+ \definecolor{NKUGold}{HTML}{#3}%
+ \colorlet{NKULilac}{NKUPurple!35!white}%
+ \colorlet{NKUPale}{NKUPurple!6!white}}
+\pgfkeys{/campus/.is family,/campus,
+ layout/.is choice,
+ layout/panorama/.code={\def\campus@layout{panorama}},
+ primary/.code={\definecolor{NKUPurple}{HTML}{#1}%
+  \colorlet{NKULilac}{NKUPurple!35!white}\colorlet{NKUPale}{NKUPurple!6!white}},
+ dark/.code={\definecolor{NKUDark}{HTML}{#1}},
+ accent/.code={\definecolor{NKUGold}{HTML}{#1}},
+ school/.store in=\CampusSchool,
+ english/.store in=\CampusEnglish,
+ motto/.store in=\CampusMotto,
+ landmark/.store in=\CampusLandmark,
+ artwork/.store in=\CampusArt,
+ artwork-trim/.store in=\CampusArtTrim,
+ logo/.store in=\campus@logo,
+ logo-white/.store in=\campus@logowhite}
+\newcommand\CampusSetup[1]{\pgfqkeys{/campus}{#1}}
+\newcommand\CampusInfo[1]{\NKUsetup{#1}}
+\newcommand\CampusSelect[1]{%
+ \edef\campus@selected{#1}%
+ \def\campus@known{0}%
+ \@for\campus@item:=nku\do{%
+  \ifx\campus@selected\campus@item\def\campus@known{1}\fi}%
+ \ifnum\campus@known=1
+  \input{schools/\campus@selected.tex}%
+ \else
+  \PackageError{Campus}{Unknown school preset: #1}{This upload project includes nku; custom schools use CampusSetup in settings.tex.}%
+ \fi}
+% School presets supply seal + wordmark combinations with separate terms.
+% Native school-name typography remains available when both logo keys are cleared.
+\newcommand\CampusBrand[2]{%
+ \begingroup
+ \def\campus@white{white}\def\campus@ink{#2}%
+ \let\campus@brandpath\campus@logo
+ \ifx\campus@ink\campus@white\let\campus@brandpath\campus@logowhite\fi
+ \ifx\campus@brandpath\@empty
+  \vbox{\hsize=#1\relax\offinterlineskip\color{#2}%
+   \hbox{\resizebox{\hsize}{!}{\mdseries\CJKfamily{nkuSerif}\CampusSchool}}%
+   \vskip.65mm
+   \hbox{\resizebox{\hsize}{!}{\normalfont\fontsize{7}{9}\selectfont\CampusEnglish}}}%
+ \else
+  \IfFileExists{\campus@brandpath}
+   {\includegraphics[width=#1,height=11mm,keepaspectratio]{\campus@brandpath}}
+   {\PackageError{Campus}{Logo file not found: \campus@brandpath}{Correct the path or clear the logo key.}}%
+ \fi\endgroup}
+\renewcommand\nku@whitebrand[1]{\CampusBrand{#1}{white}}
+\renewcommand\nku@seal[1]{\CampusBrand{22mm}{NKUPurple}}
+\newcommand\CampusDrawing[1]{%
+ \edef\campus@draw{\noexpand\includegraphics[width=#1,trim=\CampusArtTrim,clip]{\CampusArt}}\campus@draw}
+\newcommand\CampusDrawingFit[2]{%
+ \edef\campus@draw{\noexpand\includegraphics[width=#1,height=#2,keepaspectratio,
+  trim=\CampusArtTrim,clip]{\CampusArt}}\campus@draw}
+\newcommand\campus@coverinfo[1]{%
+ {\color{#1}\NKUCoverInfoFont\fontsize{14}{23}\selectfont
+ 答辩人：\nku@author\hspace{9mm}院系：\nku@institute\\[2mm]
+ 专业：\nku@major\hspace{9mm}日期：\nku@date}}
+\newsavebox\campus@titlebox
+\newcommand\campus@titlemeasurebox[2]{%
+ \sbox\campus@titlebox{\parbox{.91\paperwidth}{\centering\NKUTitleFont
+  \fontsize{#1}{#2}\selectfont\nku@title}}}
+\newcommand\campus@measuretitle{%
+ \def\campus@titlesize{58}\def\campus@titleleading{68}\def\campus@longtitle{0}%
+ \campus@titlemeasurebox{58}{68}%
+ \ifdim\dimexpr\ht\campus@titlebox+\dp\campus@titlebox\relax>24mm
+  \def\campus@titlesize{48}\def\campus@titleleading{58}%
+  \campus@titlemeasurebox{48}{58}%
+ \fi
+ \ifdim\dimexpr\ht\campus@titlebox+\dp\campus@titlebox\relax>24mm
+  \def\campus@titlesize{42}\def\campus@titleleading{52}%
+  \campus@titlemeasurebox{42}{52}%
+ \fi
+ \ifdim\dimexpr\ht\campus@titlebox+\dp\campus@titlebox\relax>26mm
+  \def\campus@titlesize{34}\def\campus@titleleading{42}\def\campus@longtitle{1}%
+  \campus@titlemeasurebox{34}{42}%
+ \fi
+ \ifdim\dimexpr\ht\campus@titlebox+\dp\campus@titlebox\relax>27mm
+  \PackageError{Campus}{Cover title exceeds its text area}{Shorten the title or move detail to the subtitle.}%
+ \fi}
+\newcommand\campus@cover@panorama{%
+ \nku@gradient
+ \node[anchor=north,inner sep=0] at (.5,.945) {\CampusBrand{43mm}{white}};
+ \node[anchor=north,text=white,align=center,text width=.91\paperwidth,inner sep=0,
+  font=\NKUTitleFont\fontsize{\campus@titlesize}{\campus@titleleading}\selectfont]
+  at (.5,{\ifnum\campus@longtitle=1 .825\else .80\fi}) {\nku@title};
+ \node[anchor=north,text=white,align=center,text width=.86\paperwidth,inner sep=0,
+  font=\NKUCoverTextFont\fontsize{17}{25}\selectfont] at (.5,.625) {\nku@subtitle};
+ \node[anchor=north,align=center,text width=.72\paperwidth,inner sep=0] at (.5,.465)
+  {\campus@coverinfo{black}};
+ \node[anchor=south,inner sep=0] at (.5,0) {\CampusDrawing{\paperwidth}};
+}
+\renewcommand\NKUcover{%
+ \begin{frame}[plain,noframenumbering]
+ \campus@measuretitle
+ \begin{NKUcanvas}
+ \csname campus@cover@\campus@layout\endcsname
+ \end{NKUcanvas}\end{frame}}
+% The building is kept in its own column on chapter/agenda pages.
+\renewcommand\NKUcontents{%
+ \begingroup
+ \global\nku@toccount=0
+ \begingroup\makeatletter
+ \let\beamer@sectionintoc\nku@counttocline\InputIfFileExists{\jobname.toc}{}{}
+ \endgroup
+ \ifnum\nku@toccount>8\PackageWarning{Campus}{Agenda exceeds 8 sections; split it into parts}\fi
+ \def\nku@toctitlesize{24}\def\nku@tocnumsize{26}\def\nku@tocnotesize{13.5}
+ \def\nku@tocfirst{.79}
+ \pgfmathsetmacro\nku@tocstep{.64/max(1,\the\nku@toccount-1)}
+ \ifnum\nku@toccount<5
+  \def\nku@toctitlesize{26}\def\nku@tocnumsize{33}\def\nku@tocnotesize{14}
+  \def\nku@tocfirst{.72}\def\nku@tocstep{.16}\fi
+ \ifnum\nku@toccount>6
+  \def\nku@toctitlesize{22}\def\nku@tocnumsize{28}\def\nku@tocnotesize{12.5}\fi
+ \begingroup\makeatletter
+ \let\beamer@sectionintoc\nku@checktocline\InputIfFileExists{\jobname.toc}{}{}
+ \endgroup
+ \begin{frame}[plain,noframenumbering]\begin{NKUcanvas}
+ \fill[white] (0,0) rectangle (1,1);
+ \begin{scope}
+  \clip (0,0) rectangle (.36,1);
+  \nku@gradient
+  \node[anchor=south west,inner sep=0] at (-.015,0)
+   {\CampusDrawingFit{2\paperwidth}{.66\paperheight}};
+ \end{scope}
+ \node[anchor=north west,text=white,inner sep=0,font=\NKUTitleFont\fontsize{46}{54}\selectfont]
+  at (.055,.89) {目录};
+ \node[anchor=north west,text=white,opacity=.65,inner sep=0,font=\fontsize{15}{20}\selectfont]
+  at (.062,.75) {CONTENTS};
+ \node[anchor=north east,inner sep=0] at (.9765625,.9861111) {\CampusBrand{34mm}{NKUPurple}};
+ \begingroup\makeatletter
+ \let\beamer@sectionintoc\nku@drawtocline\InputIfFileExists{\jobname.toc}{}{}
+ \endgroup
+ \end{NKUcanvas}\end{frame}\endgroup}
+\renewcommand\NKUending{%
+ \begin{frame}[plain,noframenumbering]\begin{NKUcanvas}
+ \nku@gradient
+ \node[anchor=north,inner sep=0] at (.5,.91) {\CampusBrand{43mm}{white}};
+ \node[text=white,inner sep=0,font=\NKUTitleFont\fontsize{51}{61}\selectfont]
+  at (.5,.66) {感谢聆听\quad 敬请指正};
+ \node[text=white,inner sep=0,font=\fontsize{16}{23}\selectfont]
+  at (.5,.51) {\nku@author\quad\nku@institute};
+ \node[anchor=south,inner sep=0] at (.5,0) {\CampusDrawing{\paperwidth}};
+ \end{NKUcanvas}\end{frame}}
+\AtBeginDocument{%
+ \IfFileExists{\CampusArt}{}{\PackageError{Campus}{Building illustration missing: \CampusArt}{Correct the artwork path.}}}
+\AtEndPreamble{%
+ \pdfstringdefDisableCommands{\def\enspace{ }}%
+ \hypersetup{pdfauthor={\nku@author},pdftitle={\nku@subtitle},
+  pdfsubject={\CampusCredit. Source: \CampusSourceURL. License: \CampusLicenseURL. Changed drawing, palette, geometry and composition. No university endorsement.}}}
+\endinput

@@ -1,0 +1,13 @@
+{
+  "asset": "assets/student-portrait.png",
+  "created": "2026-10-18",
+  "method": "built-in imagegen, new image generation",
+  "subject": "original fictional adult university student, black hair, purple cardigan, blue background",
+  "reference_images": [],
+  "prompt_file": "assets/student-portrait-prompt.txt",
+  "image_sha256": "aa0cb826b4fa53e6a78c5d8b074b7e6cec4ea363e7d1e9c5b73a6ed3e0e7c57f",
+  "edits_after_generation": [],
+  "rights_note": "AI-created original fictional illustration; not a depiction of a real student, existing character, university endorsement or exclusive rights guarantee.",
+  "license": "CC0-1.0 to the extent rights are held by the project contributors",
+  "license_file": "assets/AI-EXAMPLES-LICENSE.txt"
+}

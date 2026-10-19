@@ -1,0 +1,76 @@
+% Fictional examples; each overview has its own editable file.
+\input{examples/studentwork.tex}
+\input{examples/practice-service.tex}
+
+% Recap: topic / personal work and output. Keep 1--4 entries, matching the deck.
+% The computer-science project is a fictional example; other users replace it.
+\def\NKUSummaryRecap{%
+ 学业积累/{围绕[学习方向]梳理课程知识，\\形成[专题笔记或课程作品]。},
+ 科研竞赛/{开展图像匹配训练与学科竞赛，\\整理实现代码、对照结果与实验记录。},
+ 学生工作/{参与组织建设、活动组织与宣传联络，\\整理[活动方案、执行记录或宣传材料]。},
+ 实践服务/{参与社区需求调研与志愿服务，\\归纳需求、改进建议与服务记录。}}
+% Plan: stage / time / specific task / deliverable. Keep 1--3 entries.
+\def\NKUSummaryPlans{%
+ 近期/{[完成时间]}/{梳理[重点课程或薄弱知识点]}/{[专题笔记或课程作品]},
+ 下一阶段/{[完成时间]}/{推进[项目关键任务]}/{[阶段报告或项目作品]},
+ 持续开展/{[服务周期]}/{完善[岗位工作或服务项目]}/{[交接材料或服务记录]}}
+\newsavebox\NKUSummaryTextBox
+\newcommand\NKUsummaryfit[5]{%
+ \begin{pgfinterruptpicture}%
+  \sbox\NKUSummaryTextBox{\parbox[t]{#2mm}{\setlength\parskip{0pt}\raggedright\noindent #4#5\par}}%
+  \ifdim\dimexpr\ht\NKUSummaryTextBox+\dp\NKUSummaryTextBox\relax>#3mm
+   \PackageError{Nankai}{Summary #1 exceeds its text area}{Shorten the field; retain the current font size.}\fi
+  \global\setbox\NKUSummaryTextBox=\copy\NKUSummaryTextBox
+ \end{pgfinterruptpicture}}
+\newcommand\NKUsummarypage{\NKUdetailpage{阶段总结与未来规划}{%
+ \def\summaryrecapcount{0}\def\summaryplancount{0}%
+ \ifx\NKUSummaryRecap\empty\else
+  \foreach \entry [count=\idx] in \NKUSummaryRecap {\xdef\summaryrecapcount{\idx}}\fi
+ \ifx\NKUSummaryPlans\empty\else
+  \foreach \entry [count=\idx] in \NKUSummaryPlans {\xdef\summaryplancount{\idx}}\fi
+ \ifnum\summaryrecapcount<1
+  \PackageError{Nankai}{Summary needs at least one recap}{Use your actual preceding chapters.}\fi
+ \ifnum\summaryrecapcount>4
+  \PackageError{Nankai}{Summary supports at most four recap entries}{Select representative work.}\fi
+ \ifnum\summaryplancount<1
+  \PackageError{Nankai}{Summary needs at least one plan}{Fill a time, task and deliverable.}\fi
+ \ifnum\summaryplancount>3
+  \PackageError{Nankai}{Summary supports at most three plans}{Select realistic next steps.}\fi
+ % Two editorial columns retain the shared frame, font and Nankai palette.
+ \foreach \xx/\heading in {11.5/阶段回顾,162/下一步重点}{%
+  \node[anchor=north west,inner sep=0,text=NKUPurple,font=\bfseries\fontsize{15}{20}\selectfont]
+   at (\xx,19) {\heading};}
+ \draw[NKUPurple!45,line width=.65pt] (11.5,28)--(148.5,28);
+ \draw[NKUPurple!45,line width=.65pt] (162,28)--(250,28);
+ \draw[NKUPurple!18,line width=.45pt] (155.5,19)--(155.5,113.5);
+ \pgfmathsetmacro\summaryrecapstep{min(27,80/\summaryrecapcount)}
+ \foreach \summarytopic/\summarybody [count=\idx from 1] in \NKUSummaryRecap{%
+  \pgfmathsetmacro\summaryy{35+\summaryrecapstep*(\idx-1)}
+  \node[anchor=north west,inner sep=0,text=NKUPurple!35,font=\fontsize{22}{26}\selectfont]
+   at (11.5,{\summaryy-1}) {0\idx};
+  \NKUsummaryfit{recap heading}{120.5}{5.5}{\color{NKUPurple}\bfseries\fontsize{13}{17}\selectfont}{\summarytopic}
+  \node[anchor=north west,inner sep=0] at (28,\summaryy) {\usebox\NKUSummaryTextBox};
+  \NKUsummaryfit{recap body}{120.5}{11.5}{\color{NKUInk}\fontsize{11.5}{16.5}\selectfont}{\summarybody}
+  \node[anchor=north west,inner sep=0] at (28,{\summaryy+6.5}) {\usebox\NKUSummaryTextBox};
+ }
+ \pgfmathsetmacro\summaryplanstep{min(40,84/\summaryplancount)}
+ \pgfmathsetmacro\summarylineend{37.5+\summaryplanstep*(\summaryplancount-1)}
+ \ifnum\summaryplancount>1
+  \draw[NKUPurple!30,line width=.7pt] (165,37.5)--(165,\summarylineend);\fi
+ \foreach \summarystage/\summaryperiod/\summarytask/\summarydeliverable [count=\idx from 1] in \NKUSummaryPlans{%
+  \pgfmathsetmacro\summaryy{35+\summaryplanstep*(\idx-1)}
+  \fill[white] (165,{\summaryy+2.5}) circle (1.65mm);
+  \draw[NKUPurple,line width=.9pt,fill=NKUPale] (165,{\summaryy+2.5}) circle (1.1mm);
+  \NKUsummaryfit{plan stage}{43}{5.5}{\color{NKUPurple}\bfseries\fontsize{12.8}{17}\selectfont}{\summarystage}
+  \node[anchor=north west,inner sep=0] at (174,\summaryy) {\usebox\NKUSummaryTextBox};
+  \NKUsummaryfit{plan period}{32}{4.5}{\raggedleft\color{NKUGray}\fontsize{9.5}{13}\selectfont}{\summaryperiod}
+  \node[anchor=north west,inner sep=0] at (218,{\summaryy+1.2}) {\usebox\NKUSummaryTextBox};
+  \NKUsummaryfit{plan task and deliverable}{76}{12}{\color{NKUInk}\fontsize{11}{16}\selectfont}%
+   {\summarytask\\{\color{NKUPurple}交付：}\summarydeliverable}
+  \node[anchor=north west,inner sep=0] at (174,{\summaryy+8}) {\usebox\NKUSummaryTextBox};
+ }
+ \draw[NKUPurple!25,line width=.45pt] (11.5,119.5)--(250,119.5);
+ \node[inner sep=0,text=NKUPurple,font=\NKUTitleFont\fontsize{19}{25}\selectfont]
+  at (128,128) {\CampusMotto};
+ \NKUexamplefoot{回顾与计划为排版示例}
+}}

@@ -1,0 +1,24 @@
+{
+  "retrieved": "2026-10-19",
+  "scope": "Local review candidate; not university endorsement or an open licence for university marks. Code MIT does not cover marks.",
+  "nku": {
+    "chinese_vector_source": "https://math.nankai.edu.cn/_upload/tpl/03/f9/1017/template1017/images/logo4.svg",
+    "extracted_group": "组_1791, eight unmodified path geometries",
+    "seal_source_page": "https://www.nankai.edu.cn/2019/1013/c17480a238753/page.htm",
+    "seal_input": "nankai-seal.jpg",
+    "seal_pdf_mask_pixels": [
+      600,
+      596
+    ],
+    "english": "native TeX Gyre Termes Bold, not an official vector original",
+    "composition_is_official_standard_file": false,
+    "layout": "237x75 bp; centered by visible content; legacy visible width preserved",
+    "purple_variant": {
+      "composition": "nankai-brand-purple.tex",
+      "pdf": "nankai-brand-purple.pdf",
+      "wordmark": "same original path operators; only five white RGB fills changed to #743481",
+      "seal": "unchanged nankai-seal.jpg",
+      "english": "same native TeX Gyre Termes Bold; purple"
+    }
+  }
+}

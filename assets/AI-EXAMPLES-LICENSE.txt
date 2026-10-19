@@ -1,0 +1,36 @@
+AI-created example images — Scholarship Beamer
+
+Applies only to:
+- assets/student-portrait.jpg
+- assets/campus-scenes/meeting.jpg, fieldwork.jpg, interview.jpg and volunteer.jpg
+- assets/studentwork/coordination.jpg, event-prep.jpg, event-live.jpg,
+  campus-reporting.jpg and content-editing.jpg
+- assets/practice-service/research-preparation.jpg, environment-cleanup.jpg,
+  campus-guidance.jpg, science-outreach.jpg and library-service.jpg
+
+These are compressed derivatives of the original generated PNG files recorded
+in the adjacent provenance. This dedication covers both the original example
+images and their JPEG derivatives; the mapping and hashes for the derivatives
+in this package are recorded in assets/compression-map.json. This package does
+not include the unused competition photographs or unused practice scenes.
+
+To the extent that the project contributors (previously credited as
+NKU-Beamer contributors) hold copyright or related rights
+in these images, they dedicate those rights under CC0 1.0 Universal:
+https://creativecommons.org/publicdomain/zero/1.0/
+Legal code: https://creativecommons.org/publicdomain/zero/1.0/legalcode.en
+
+These are fictional AI-generated illustrations. They do not document actual
+events, real students, awards, service hours, consent, or university endorsement.
+No exclusive copyright, third-party clearance, trademark, publicity or other
+rights guarantee is made. The CC0 limitations and disclaimers apply.
+
+Generation prompts and file hashes are recorded in the adjacent provenance.
+No purchased illustration or third-party reference image was used as input
+for these example images.
+
+This dedication does NOT apply to the campus building artwork, its reference
+photographs, university marks, research input photographs, or fonts. Their
+separate terms, sources and any outstanding scope decisions are listed in
+ASSETS.md. The reference photograph's licence must not be automatically
+represented as a blanket clearance for every later generated illustration.

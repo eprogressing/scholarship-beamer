@@ -1,0 +1,260 @@
+{
+  "scope": "Encoding-only photo derivatives; originals retained outside this upload package",
+  "photos": [
+    {
+      "original": "assets/campus-scenes/fieldwork.png",
+      "derivative": "assets/campus-scenes/fieldwork.jpg",
+      "original_bytes": 2536035,
+      "bytes": 313709,
+      "original_dimensions": [
+        1536,
+        1024
+      ],
+      "dimensions": [
+        1200,
+        800
+      ],
+      "original_sha256": "46ee26aeceb77e8da6f8118cd0fcd6e30f0cbd300ac8448e3e1df211b0480ffc",
+      "sha256": "0ee361780e532930cd9767fe7daddd9c71708beb4418f42c01cce2ae27ad50c3",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/campus-scenes/interview.png",
+      "derivative": "assets/campus-scenes/interview.jpg",
+      "original_bytes": 2098997,
+      "bytes": 223486,
+      "original_dimensions": [
+        1536,
+        1024
+      ],
+      "dimensions": [
+        1200,
+        800
+      ],
+      "original_sha256": "967a22d838891a87670f617623550e6e4f121c749a4219acf7cd1e15d9e4ee2a",
+      "sha256": "6eb1c32b92284520a32564f6525dca26b6160de049eba7658ef5c8886925edc7",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/campus-scenes/meeting.png",
+      "derivative": "assets/campus-scenes/meeting.jpg",
+      "original_bytes": 1971584,
+      "bytes": 194666,
+      "original_dimensions": [
+        1536,
+        1024
+      ],
+      "dimensions": [
+        1200,
+        800
+      ],
+      "original_sha256": "5d876731e9101b35f23a48f52af8e2271faa83cf0b9f4efed90d6452231652dc",
+      "sha256": "1e71d89678c66230f0ca701d36085058c2d074550e317159afdee51f6d8b3dcd",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/campus-scenes/volunteer.png",
+      "derivative": "assets/campus-scenes/volunteer.jpg",
+      "original_bytes": 2164619,
+      "bytes": 213572,
+      "original_dimensions": [
+        1536,
+        1024
+      ],
+      "dimensions": [
+        1200,
+        800
+      ],
+      "original_sha256": "c7ae9d974752393af93696636c9c785e99e3da5b30508825ea27184b4acd68dc",
+      "sha256": "146fb6c54787550d371e85ac6c0b7a658d4d761b330a8185c5df780e8b69584d",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/practice-service/campus-guidance.png",
+      "derivative": "assets/practice-service/campus-guidance.jpg",
+      "original_bytes": 2294362,
+      "bytes": 250656,
+      "original_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1200,
+        675
+      ],
+      "original_sha256": "ee8690c3e98e34d56f0c5dc34bafd6ed418e25aa93cfb1f677b935e2a31f1115",
+      "sha256": "70530dce9010e008f1282af5bd3bade32ef89995d01bcebd7450c113754db6b3",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/practice-service/environment-cleanup.png",
+      "derivative": "assets/practice-service/environment-cleanup.jpg",
+      "original_bytes": 2843434,
+      "bytes": 354307,
+      "original_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1200,
+        675
+      ],
+      "original_sha256": "96f0edba903a31a12a82fd950979afd2e3e25766f5a57c43d0eccad605d15042",
+      "sha256": "2051b033e585ffc5764f4a699213640030114f4054ee2f57a8dbd1cd1a128a38",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/practice-service/library-service.png",
+      "derivative": "assets/practice-service/library-service.jpg",
+      "original_bytes": 2154133,
+      "bytes": 235604,
+      "original_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1200,
+        675
+      ],
+      "original_sha256": "7958b46af638ceb61c6dff65fc2c5138a52557f2e85e122d17e70aa66e275279",
+      "sha256": "4c8eacf3cc8ae8b5f4daa5fc6d877e37152d4614bd6547ea2ea4a66b3fdd8d3f",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/practice-service/research-preparation.png",
+      "derivative": "assets/practice-service/research-preparation.jpg",
+      "original_bytes": 2335808,
+      "bytes": 246234,
+      "original_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1200,
+        675
+      ],
+      "original_sha256": "468532b149f5771f1d686f4971165122f64f1eb6410fe2817d6ce03c326736b2",
+      "sha256": "b0f32b6ea11fb3e91fc1cd8f56f805ff0909a1e185d5e3186f01e8bdcff01170",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/practice-service/science-outreach.png",
+      "derivative": "assets/practice-service/science-outreach.jpg",
+      "original_bytes": 2200072,
+      "bytes": 215539,
+      "original_dimensions": [
+        1672,
+        941
+      ],
+      "dimensions": [
+        1200,
+        675
+      ],
+      "original_sha256": "4f95a19b061447d1a2561b06c882aa3651c93a4a6a5c7ac030e7ccc3c7c89e70",
+      "sha256": "b319f4bb0e7677dfe85fcc11abb0cbe6bbf1c3e5c30e3e9fec438d65ec90beed",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/student-portrait.png",
+      "derivative": "assets/student-portrait.jpg",
+      "original_bytes": 2515672,
+      "bytes": 275693,
+      "original_dimensions": [
+        1145,
+        1374
+      ],
+      "dimensions": [
+        1000,
+        1200
+      ],
+      "original_sha256": "aa0cb826b4fa53e6a78c5d8b074b7e6cec4ea363e7d1e9c5b73a6ed3e0e7c57f",
+      "sha256": "227545d76a61206f766b4edb31ca4c2feb50b3ed5841dba0bef09d2f704409a3",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/studentwork/campus-reporting.png",
+      "derivative": "assets/studentwork/campus-reporting.jpg",
+      "original_bytes": 2392158,
+      "bytes": 281948,
+      "original_dimensions": [
+        1536,
+        1024
+      ],
+      "dimensions": [
+        1200,
+        800
+      ],
+      "original_sha256": "4dc4109c4080c0828ae4f236bcd81ba4ddb692972bf0df3571d2572cce0b87cd",
+      "sha256": "00fa15a8dcac98d35c8bc4c197c9ed8482cb47842b37fa03971543674e888998",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/studentwork/content-editing.png",
+      "derivative": "assets/studentwork/content-editing.jpg",
+      "original_bytes": 2200507,
+      "bytes": 257319,
+      "original_dimensions": [
+        1536,
+        1024
+      ],
+      "dimensions": [
+        1200,
+        800
+      ],
+      "original_sha256": "ba8208e75556d649e0aca757a26021c5a6c01c3f2d73210f98912f012aa97078",
+      "sha256": "5789de0d1088386d948433a4ee41a830b42014d047db687c5c5de071f7e9f0df",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/studentwork/coordination.png",
+      "derivative": "assets/studentwork/coordination.jpg",
+      "original_bytes": 1988432,
+      "bytes": 201511,
+      "original_dimensions": [
+        1536,
+        1024
+      ],
+      "dimensions": [
+        1200,
+        800
+      ],
+      "original_sha256": "eb773b60112e2bf08b2c66544904f08f5d295f99e53c3920dff90be379ac0dab",
+      "sha256": "4d91c6f71347bab5243ed8fad3a87c7767c02d205e227abbe69f9f014001b00a",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/studentwork/event-live.png",
+      "derivative": "assets/studentwork/event-live.jpg",
+      "original_bytes": 1872214,
+      "bytes": 168534,
+      "original_dimensions": [
+        1536,
+        1024
+      ],
+      "dimensions": [
+        1200,
+        800
+      ],
+      "original_sha256": "79b3d19b27ad18c571ebcc63276e452c5756d889e475c28f3d917cecf2610213",
+      "sha256": "86194f4627f69e12adf5df0180b1aae520c35a6a8aa1169bdd4f93df424e71e8",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    },
+    {
+      "original": "assets/studentwork/event-prep.png",
+      "derivative": "assets/studentwork/event-prep.jpg",
+      "original_bytes": 2124218,
+      "bytes": 242389,
+      "original_dimensions": [
+        1536,
+        1024
+      ],
+      "dimensions": [
+        1200,
+        800
+      ],
+      "original_sha256": "c5c0250a609636270678e8e7ec16f89b68afc5be08f98041a618b6629f0e1b50",
+      "sha256": "b102d54ebb0537f6df25ff7542a2eda739c0a35e36783ee7a56d0dfe33906d49",
+      "method": "JPEG quality 90, 4:4:4, maximum edge 1200; no crop or retouch"
+    }
+  ]
+}

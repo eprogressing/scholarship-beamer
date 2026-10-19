@@ -1,0 +1,159 @@
+% One editable project. Images are replaceable; captions, legends, crop boxes,
+% color scale, typography and table are native LaTeX/TikZ.
+\begingroup
+\input{assets/research/measurements.tex}
+% Edit these three bodies. The flow layout supports up to three lines each.
+\def\ResearchContribHeight{48}
+\def\ResearchWorkOne{构造旋转、亮度与透视扰动，统一图像输入尺度。}
+\def\ResearchWorkTwo{实现ORB与比值筛选，结合RANSAC剔除离群对应点。}
+\def\ResearchWorkThree{保存参数与对照图，复核内点数量及已知变换下的几何误差。}
+\long\def\ResearchContribution#1#2#3{\noindent
+ {\color{NKUPurple}\bfseries #1\enspace #2}\enspace #3\par}
+\def\ResearchContribContent{%
+ \ResearchContribution{01}{扰动构造}{\ResearchWorkOne}%
+ \vspace{1.5mm}\vfill
+ \ResearchContribution{02}{匹配实现}{\ResearchWorkTwo}%
+ \vspace{1.5mm}\vfill
+ \ResearchContribution{03}{实验复核}{\ResearchWorkThree}}
+\ifdefined\NKUResearchContribBox\else\newsavebox{\NKUResearchContribBox}\fi
+\sbox{\NKUResearchContribBox}{\begin{minipage}{74mm}
+ \fontsize{10.5}{14.5}\selectfont\setlength{\parindent}{0pt}\ResearchContribContent
+\end{minipage}}
+\ifdim\dimexpr\ht\NKUResearchContribBox+\dp\NKUResearchContribBox\relax>\ResearchContribHeight mm
+ \PackageError{Nankai}{Research contributions exceed the 48mm text area}
+ {Shorten each contribution to at most three lines. Do not reduce the whole page.}
+\fi
+\sbox{\NKUResearchContribBox}{\begin{minipage}[t][\ResearchContribHeight mm][s]{74mm}
+ \fontsize{10.5}{14.5}\selectfont\setlength{\parindent}{0pt}\ResearchContribContent
+\end{minipage}}
+\definecolor{ResearchKeep}{RGB}{45,231,222}
+\definecolor{ResearchReject}{RGB}{255,185,74}
+\definecolor{ResearchNoOverlap}{RGB}{235,233,239}
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.north west)},x=1mm,y=-1mm,
+ every node/.append style={outer sep=0}]
+\clip (0,0) rectangle (256,144);
+% Keep the shared profile-page header and official wordmark combination.
+\fill[NKUPurple] (0,3) rectangle (2.6,12.3);
+\node[anchor=north west,inner sep=0,text=NKUPurple,
+ font=\bfseries\fontsize{9.5}{13}\selectfont] at (5,3.1)
+ {\CampusSchool\enspace ·\enspace \NKUinstitute};
+\node[anchor=north west,inner sep=0,text=NKUInk,
+ font=\bfseries\fontsize{12}{16}\selectfont] at (5,8.1)
+ {\ifnum\thesection<10 0\fi\thesection\enspace \insertsectionhead\enspace ·\enspace 科研项目};
+\node[anchor=north east,inner sep=0] at (250,2)
+ {\CampusBrand{34mm}{NKUPurple}};
+
+% Separate title/time columns; no overlap when replacing a 25-character title.
+\shade[left color=NKUPale,right color=white] (11.5,16) rectangle (250,29);
+\fill[NKUPurple!65] (11.5,16) rectangle (12.8,29);
+\node[anchor=north west,inner sep=0,text=NKUDark,text width=165mm,
+ font=\bfseries\fontsize{16}{20}\selectfont] at (15.5,16.7)
+ {多场景图像特征匹配与几何验证};
+\node[anchor=north east,inner sep=0,text=NKUGray,text width=60mm,align=right,
+ font=\fontsize{9.8}{13}\selectfont] at (248,17.5) {项目时间：[起止年月]};
+\node[anchor=north west,inner sep=0,text=NKUInk,text width=230mm,
+ font=\fontsize{10.1}{14}\selectfont] at (15.5,24)
+ {研究目标：在旋转、亮度与透视变化下，筛选可靠对应点并检验配准效果。};
+\node[anchor=north west,inner sep=0,text=NKUGray,
+ font=\fontsize{9.8}{13}\selectfont] at (11.5,30.8)
+ {项目性质：课程研究训练\qquad 指导教师：[教师姓名]};
+
+% One compact route, with no repeated explanatory subtitles.
+\fill[NKUPale] (11.5,36) rectangle (250,45);
+\draw[NKUPurple!28,line width=.45pt] (11.5,36)--(250,36);
+\draw[NKUPurple!28,line width=.45pt] (11.5,45)--(250,45);
+\foreach \xx/\heading in {
+ 35.35/图像采样,83.05/局部特征,130.75/比值筛选,178.45/几何验证,226.15/结果分析}{
+ \node[text=NKUPurple,inner sep=0,font=\bfseries\fontsize{12}{16}\selectfont]
+  at (\xx,40.5) {\heading};}
+\foreach \xx in {59.2,106.9,154.6,202.3}{
+ \draw[-Latex,NKUPurple!55,line width=.65pt] ({\xx-2},40.5)--({\xx+2},40.5);}
+
+\foreach \xa/\xb/\heading in {11.5/167.5/{coffee示例：图像处理与匹配结果},176/250/本人贡献}{
+ \shade[left color=NKUPale,right color=white] (\xa,48) rectangle (\xb,54.5);
+ \fill[NKUPurple!65] (\xa,48) rectangle ({\xa+1.3},54.5);
+ \node[anchor=west,inner sep=0,text=NKUPurple,
+  font=\bfseries\fontsize{12.5}{16}\selectfont] at ({\xa+4},51.25) {\heading};}
+% The colors indicate the RANSAC decision, not ground-truth classification.
+\draw[ResearchKeep,line width=1.5pt] (117,51.25)--(121,51.25);
+\node[anchor=west,inner sep=0,text=NKUInk,font=\fontsize{8.8}{11}\selectfont]
+ at (122.5,51.25) {保留};
+\draw[ResearchReject,dashed,line width=1.5pt] (144,51.25)--(148,51.25);
+\node[anchor=west,inner sep=0,text=NKUInk,font=\fontsize{8.8}{11}\selectfont]
+ at (149.5,51.25) {剔除};
+\draw[NKUPurple!20,line width=.45pt] (172,48)--(172,135.5);
+
+% Two columns / three rows; one coffee case, two views per panel.
+\foreach \xx/\yy/\image/\caption in {
+ 11.5/57/inputs/{(a) 参考图与扰动图},
+ 91.5/57/keypoints/{(b) 局部特征检测},
+ 11.5/83.4/candidates/{(c) 比值筛选后对应（抽样\ResearchSampleCount 组）},
+ 91.5/83.4/verified/{(d) 同组对应的几何验证},
+ 11.5/109.8/patches/{(e) A区局部对应},
+ 91.5/109.8/errors/{}}{
+ \node[anchor=north west,inner sep=0] at (\xx,\yy)
+  {\includegraphics[width=76mm,height=21.1111mm,keepaspectratio]{assets/research/\image.png}};
+ \draw[NKUPurple!22,line width=.4pt] (\xx,\yy) rectangle ({\xx+76},{\yy+21.1111});
+ \node[anchor=north,inner sep=0,text=NKUInk,
+  font=\fontsize{9.3}{12}\selectfont] at ({\xx+38},{\yy+22.2}) {\caption};}
+
+% Native crop frames refer directly to the normalized source coordinates.
+\foreach \ax/\ay/\bx/\by in \ResearchCropBoxes{
+ \draw[NKUPurple,line width=.8pt] ({11.5+76*\ax},{57+21.1111*\ay})
+  rectangle ({11.5+76*\bx},{57+21.1111*\by});
+ \node[anchor=north west,fill=white,text=NKUPurple,inner sep=.3mm,
+  font=\bfseries\fontsize{7.8}{9}\selectfont]
+  at ({11.5+76*\ax},{57+21.1111*\ay}) {A};}
+\foreach \xx in {30.5,68.5}{
+ \draw[NKUPurple,line width=.8pt] (\xx,120.3556) circle[radius=.7mm];}
+\foreach \xx/\label in {110.5/配准前,148.5/配准后}{
+ \node[fill=white,fill opacity=.9,text opacity=1,text=NKUInk,inner sep=.4mm,
+  font=\fontsize{7.8}{9}\selectfont] at (\xx,111.8) {\label};}
+% Editable MAGMA scale, using the exact 0..80 RGB-difference mapping.
+\node[anchor=west,inner sep=0,text=NKUInk,font=\fontsize{9.3}{12}\selectfont]
+ at (91.5,133.8) {(f) 平均RGB绝对差};
+\fill[ResearchNoOverlap] (122.5,133.15) rectangle (124,134.45);
+\node[anchor=west,inner sep=0,text=NKUInk,font=\fontsize{7.7}{10}\selectfont]
+ at (125,133.8) {无重叠};
+\foreach \pos/\red/\green/\blue in \ResearchMagmaStops{
+ \definecolor{ResearchMagmaStep}{RGB}{\red,\green,\blue}
+ \fill[ResearchMagmaStep] ({137+21*\pos/40},133.15)
+  rectangle ({137+21*(\pos+1)/40+.01},134.45);}
+\node[anchor=east,inner sep=0,text=NKUInk,font=\fontsize{7.7}{10}\selectfont]
+ at (135.5,133.8) {0};
+\node[anchor=west,inner sep=0,text=NKUInk,font=\fontsize{7.7}{10}\selectfont]
+ at (159.5,133.8) {$\geq$80};
+
+% Three variable-height paragraphs share a bounded, stretchable text area.
+\node[anchor=north west,inner sep=0,text=NKUInk] at (176,57)
+ {\usebox{\NKUResearchContribBox}};
+\pgfmathsetmacro{\ResearchTableTop}{57+\ResearchContribHeight+2}
+\shade[left color=NKUPale,right color=white] (176,\ResearchTableTop) rectangle (250,{\ResearchTableTop+6});
+\fill[NKUPurple!65] (176,\ResearchTableTop) rectangle (177.3,{\ResearchTableTop+6});
+\node[anchor=west,inner sep=0,text=NKUPurple,
+ font=\bfseries\fontsize{12.5}{16}\selectfont] at (180,{\ResearchTableTop+3}) {实验结果};
+\fill[NKUPale] (176,{\ResearchTableTop+7.5}) rectangle (250,{\ResearchTableTop+12.5});
+\foreach \xx/\heading in {185/样图,208/筛选后,225.5/内点,243/内点率}{
+ \node[inner sep=0,text=NKUPurple,font=\bfseries\fontsize{9.4}{12}\selectfont]
+  at (\xx,{\ResearchTableTop+10}) {\heading};}
+\foreach \yy/\name/\counta/\countb/\rate in {
+ 16/astronaut/\ResearchAstroCandidates/\ResearchAstroInliers/\ResearchAstroRate,
+ 21.5/coffee/\ResearchCoffeeCandidates/\ResearchCoffeeInliers/\ResearchCoffeeRate}{
+ \node[inner sep=0,text=NKUInk,font=\fontsize{9.5}{12}\selectfont] at (185,{\ResearchTableTop+\yy}) {\name};
+ \node[inner sep=0,text=NKUInk,font=\fontsize{10.5}{13}\selectfont] at (208,{\ResearchTableTop+\yy}) {\counta};
+ \node[inner sep=0,text=NKUInk,font=\fontsize{10.5}{13}\selectfont] at (225.5,{\ResearchTableTop+\yy}) {\countb};
+ \node[inner sep=0,text=NKUPurple,font=\bfseries\fontsize{10.5}{13}\selectfont] at (243,{\ResearchTableTop+\yy}) {\rate\%};}
+\draw[NKUPurple!22,line width=.45pt] (176,{\ResearchTableTop+24.5})--(250,{\ResearchTableTop+24.5});
+\node[anchor=north west,inner sep=0,text=NKUInk,font=\fontsize{9.7}{13}\selectfont]
+ at (176,{\ResearchTableTop+27}) {coffee内点几何误差中位数：\textcolor{NKUPurple}{\bfseries\ResearchCoffeeMedianError\,px}};
+\node[anchor=north west,inner sep=0,text=NKUGray,
+ font=\fontsize{8.1}{11}\selectfont] at (11.5,138)
+ {示例图：\href{https://github.com/scikit-image/scikit-image}{scikit-image} / Rachel Michetti（CC0）};
+\node[text=NKUPurple,inner sep=0,font=\fontsize{8.5}{11}\selectfont]
+ at (128,140) {\insertframenumber};
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+\endgroup

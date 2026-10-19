@@ -1,0 +1,52 @@
+Scholarship Beamer — current architectural illustration
+
+Applies to this file only:
+assets/campuses/nku/panorama-selected-tall.png
+SHA256: db66d0da6e0089f0ec312b3877cc05593645512292677c296ec2eac55b95b768
+
+Licence grant
+Scholarship Beamer contributors license the Copyright and Similar Rights
+that they hold and have authority to license in this illustration under
+Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+Within that licensed scope, copying, sharing and adaptations are permitted,
+including commercial use, subject to the licence conditions. When sharing
+adapted material subject to this licence, follow its ShareAlike requirements.
+
+Licence: https://creativecommons.org/licenses/by-sa/4.0/
+Legal code: https://creativecommons.org/licenses/by-sa/4.0/legalcode.en
+Unmodified legal-code copy: assets/licenses/CC-BY-SA-4.0.txt
+
+Attribution and reference
+Illustration: Scholarship Beamer contributors, AI-assisted re-illustration.
+Reference photograph: Amazingloong, Main Building of Nankai University
+2015-08-04.jpg, published under CC BY-SA 4.0.
+Source: https://commons.wikimedia.org/wiki/File:Main_Building_of_Nankai_University_2015-08-04.jpg
+
+Changes include AI-assisted redrawing, warm comic-style colouring, a paired
+decorative building arrangement, retention of the central pavilion and
+increased tower height. The result is not a literal photographic panorama.
+Earlier generation used a user-supplied purchased illustration as a style
+reference. That reference file is not distributed in this package. The
+generation chain, prompts, source hashes and author's later clarification
+remain in assets/campuses/nku/selected-tall-provenance.json and adjacent
+reference records. The linked original reference photograph is not bundled.
+
+When sharing the illustration or an exported example containing it, preserve
+appropriate attribution, source and licence links, modification notices and
+this rights-scope notice in a manner reasonable for the medium. For a PDF,
+the embedded credit/source metadata and accompanying CREDITS.md provide the
+information; for a screenshot, supply the credit alongside it.
+
+Scope and limitations
+This grant does not assert that every AI-generated element is copyrightable
+in every jurisdiction, or that all third-party rights have been cleared.
+It does not license rights the contributors do not hold. Trademark and
+personality rights, university seals/wordmarks, fonts, code and unrelated
+example images are outside this grant. Do not imply university, photographer
+or reference-artist endorsement. See ASSETS.md for the separate terms.
+The CC BY-SA 4.0 legal code, including its disclaimers, governs this grant;
+the scope notes do not add restrictions on rights granted by that licence.
+
+Earlier non-included building files described in historical provenance
+retain their own prior licence records. They are not the active asset covered
+by this file and are not included in the current upload package.

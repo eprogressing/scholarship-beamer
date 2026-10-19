@@ -1,0 +1,106 @@
+% Editable overview: a narrow role dossier and an asymmetric six-photo wall.
+% A work group need not correspond to a different role.
+\def\NKUStudentRoles{%
+ 班级/{[职务名称]}/{[起止年月]},
+ 学院学生组织/{[职务名称]}/{[起止年月]},
+ 学生社团/{[职务名称]}/{[起止年月]}}
+% title / responsibility and output / main photo / caption / supporting photo / caption.
+% Braces protect path slashes. Each action demonstrates a duty and an output.
+\def\NKUStudentGroups{%
+ 组织建设/{负责[具体班团事务]，\\形成[反馈记录或改进结果]。}/{assets/campus-scenes/meeting.jpg}/班级交流/{assets/studentwork/coordination.jpg}/工作协调,
+ 活动组织/{承担[活动策划或执行]，\\完成[方案、执行或复盘材料]。}/{assets/studentwork/event-live.jpg}/交流分享/{assets/studentwork/event-prep.jpg}/现场筹备,
+ 宣传联络/{负责[采访、撰稿或排版]，\\形成[稿件、推送或宣传材料]。}/{assets/studentwork/campus-reporting.jpg}/校园采访/{assets/studentwork/content-editing.jpg}/图文编辑}
+% One-based work-group number for the large lead photograph; the rest stay visible.
+\def\NKUStudentLeadGroup{2}
+\newsavebox\NKUStudentTextBox
+\newsavebox\NKUStudentPhotoBox
+\newcommand\NKUstudentfit[5]{%
+ \begin{pgfinterruptpicture}%
+  \sbox\NKUStudentTextBox{\parbox[t]{#2mm}{%
+   \setlength\parskip{0pt}\raggedright\noindent #4#5\par}}%
+  \ifdim\dimexpr\ht\NKUStudentTextBox+\dp\NKUStudentTextBox\relax>#3mm
+   \PackageError{Nankai}{Student work #1 exceeds its text area}{Shorten the field; retain the current font size.}\fi
+  \global\setbox\NKUStudentTextBox=\copy\NKUStudentTextBox
+ \end{pgfinterruptpicture}}
+% Photos fill their frame without distortion.
+\newcommand\NKUstudentphoto[5]{%
+ \begin{scope}[shift={(#1,#2)}]
+  \draw[NKUGray!20,line width=.3pt] (-.45,-.45) rectangle ({#3+.45},{#4+.45});
+  \IfFileExists{#5}{%
+   \begin{pgfinterruptpicture}%
+    \sbox\NKUStudentPhotoBox{\includegraphics[width=#3mm]{#5}}%
+    \ifdim\dimexpr\ht\NKUStudentPhotoBox+\dp\NKUStudentPhotoBox\relax<#4mm
+     \sbox\NKUStudentPhotoBox{\includegraphics[height=#4mm]{#5}}\fi
+    \global\setbox\NKUStudentPhotoBox=\copy\NKUStudentPhotoBox
+   \end{pgfinterruptpicture}%
+   \begin{scope}
+    \clip (0,0) rectangle (#3,#4);
+    % Keep faces near the top; remove most overflow from the lower foreground.
+    \pgfmathsetmacro\studentphototop{-.15*((\the\ht\NKUStudentPhotoBox+\the\dp\NKUStudentPhotoBox)/1mm-#4)}
+    \node[anchor=north,inner sep=0] at ({#3/2},\studentphototop) {\usebox\NKUStudentPhotoBox};
+   \end{scope}
+  }{\PackageError{Nankai}{Student work photo file not found: #5}{Check the path in NKUStudentGroups.}}%
+ \end{scope}}
+% Captions belong to their pictures, instead of forming nine loose text blocks.
+\newcommand\NKUstudentphotocaption[7]{%
+ \NKUstudentphoto{#1}{#2}{#3}{#4}{#5}
+ \fill[NKUInk,opacity=.60] (#1,{#2+#4-4.4}) rectangle ({#1+#3},{#2+#4});
+ \pgfmathsetmacro\studentcaptionwidth{#3-4}
+ \NKUstudentfit{photo caption}{\studentcaptionwidth}{3.9}{\color{white}\bfseries\fontsize{#6}{13}\selectfont}{#7}
+ \node[anchor=west,inner sep=0] at ({#1+2},{#2+#4-2.2}) {\usebox\NKUStudentTextBox};}
+\newcommand\NKUstudentworkpage{\NKUdetailpage{任职与工作成效}{%
+ \def\NKUStudentRoleCount{0}\def\NKUStudentGroupCount{0}
+ \ifx\NKUStudentRoles\empty\else
+  \foreach \entry [count=\roleidx] in \NKUStudentRoles {\xdef\NKUStudentRoleCount{\roleidx}}\fi
+ \foreach \entry [count=\groupidx] in \NKUStudentGroups {\xdef\NKUStudentGroupCount{\groupidx}}
+ \ifnum\NKUStudentRoleCount<1
+  \PackageError{Nankai}{Student work needs at least one role}{Fill the organization, role and tenure.}\fi
+ \ifnum\NKUStudentRoleCount>3
+  \PackageError{Nankai}{Student work supports at most three roles}{Select representative roles.}\fi
+ \ifnum\NKUStudentGroupCount=3\else
+  \PackageError{Nankai}{Student work overview needs three work groups}{Use three aspects of your work; they may belong to the same role.}\fi
+ \ifnum\NKUStudentLeadGroup<1
+  \PackageError{Nankai}{Student work lead group must be one to three}{Select a work-group number.}\fi
+ \ifnum\NKUStudentLeadGroup>3
+  \PackageError{Nankai}{Student work lead group must be one to three}{Select a work-group number.}\fi
+ % Left dossier: strong type, a quiet rule, then roles and concrete duties.
+ \node[anchor=north west,inner sep=0,text=NKUDark,
+  font=\bfseries\fontsize{20}{25}\selectfont] at (11.5,18) {任职经历};
+ \draw[NKUPurple!65,line width=.8pt] (11.5,29)--(83,29);
+ \pgfmathsetmacro\studentrolelineend{36+13*(\NKUStudentRoleCount-1)}
+ \draw[NKUPurple!25,line width=.55pt] (13,36)--(13,\studentrolelineend);
+ \foreach \org/\role/\tenure [count=\roleidx from 0] in \NKUStudentRoles{%
+  \pgfmathsetmacro\studentroley{34+13*\roleidx}
+  \fill[NKUPurple] (13,{\studentroley+2}) circle (.95mm);
+  \NKUstudentfit{role}{65.5}{5.8}{\color{NKUInk}\bfseries\fontsize{10.2}{14}\selectfont}{\org\enspace ·\enspace \role}
+  \node[anchor=north west,inner sep=0] at (17.5,\studentroley) {\usebox\NKUStudentTextBox};
+  \NKUstudentfit{tenure}{65.5}{4}{\color{NKUGray}\fontsize{8.5}{12}\selectfont}{任期：\tenure}
+  \node[anchor=north west,inner sep=0] at (17.5,{\studentroley+5.9}) {\usebox\NKUStudentTextBox};
+ }
+ \pgfmathsetmacro\studentworktop{40+12*\NKUStudentRoleCount}
+ \pgfmathsetmacro\studentworkstep{16+4*(3-\NKUStudentRoleCount)}
+ \node[anchor=north west,inner sep=0,text=NKUInk,
+  font=\bfseries\fontsize{12}{16}\selectfont] at (11.5,\studentworktop) {本人工作与产出};
+ \draw[NKUPurple!20,line width=.4pt] (11.5,{\studentworktop+6})--(83,{\studentworktop+6});
+ \foreach \heading/\action/\mainphoto/\maincap/\subphoto/\subcap
+  [count=\groupidx from 0] in \NKUStudentGroups{%
+  \pgfmathtruncatemacro\studentnumber{\groupidx+1}
+  \pgfmathsetmacro\studentactiony{\studentworktop+9+\studentworkstep*\groupidx}
+  \NKUstudentfit{heading}{71.5}{5.3}{\color{NKUPurple}\bfseries\fontsize{10.8}{14}\selectfont}{0\studentnumber\enspace \heading}
+  \node[anchor=north west,inner sep=0] at (11.5,\studentactiony) {\usebox\NKUStudentTextBox};
+  \NKUstudentfit{action}{65.5}{9.7}{\color{NKUInk}\fontsize{9.6}{13}\selectfont}{\action}
+  \node[anchor=north west,inner sep=0] at (17.5,{\studentactiony+5.8}) {\usebox\NKUStudentTextBox};
+  % One lead picture plus two small supporting pictures share a single edge.
+  \ifnum\studentnumber=\NKUStudentLeadGroup
+   \NKUstudentphotocaption{91}{18}{101}{61}{\mainphoto}{10.4}{0\studentnumber\enspace \heading\enspace ·\enspace \maincap}
+  \else
+   \pgfmathtruncatemacro\studentstack{ifthenelse(\studentnumber<\NKUStudentLeadGroup,\groupidx,\groupidx-1)}
+   \pgfmathsetmacro\studentstacky{18+32*\studentstack}
+   \NKUstudentphotocaption{195}{\studentstacky}{55}{29}{\mainphoto}{9.0}{0\studentnumber\enspace \maincap}
+  \fi
+  % The lower strip follows 01/02/03, matching duties at left.
+  \pgfmathsetmacro\studentx{91+53.5*\groupidx}
+  \NKUstudentphotocaption{\studentx}{84}{52}{41}{\subphoto}{9.0}{0\studentnumber\enspace \subcap}
+ }
+ \NKUexamplefoot{任职与工作内容为排版示例，场景图片由AI生成}
+}}

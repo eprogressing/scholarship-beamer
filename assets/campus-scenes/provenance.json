@@ -1,0 +1,45 @@
+{
+  "assets": [
+    {
+      "path": "meeting.png",
+      "sha256": "5d876731e9101b35f23a48f52af8e2271faa83cf0b9f4efed90d6452231652dc",
+      "generated_by": "built-in imagegen",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "fieldwork.png",
+      "sha256": "46ee26aeceb77e8da6f8118cd0fcd6e30f0cbd300ac8448e3e1df211b0480ffc",
+      "generated_by": "built-in imagegen",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "interview.png",
+      "sha256": "967a22d838891a87670f617623550e6e4f121c749a4219acf7cd1e15d9e4ee2a",
+      "generated_by": "built-in imagegen",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "volunteer.png",
+      "sha256": "c7ae9d974752393af93696636c9c785e99e3da5b30508825ea27184b4acd68dc",
+      "generated_by": "built-in imagegen",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    }
+  ],
+  "prompt_file": "prompts.json",
+  "use": "Illustrative fictional campus/community scenes. Not evidence of actual attendance, volunteering, consent forms, results or institutional endorsement.",
+  "license_note": "AI-created illustrations recorded separately from MIT code; no exclusive rights or zero-infringement guarantee.",
+  "license": "CC0-1.0 to the extent rights are held by the project contributors",
+  "license_file": "assets/AI-EXAMPLES-LICENSE.txt"
+}

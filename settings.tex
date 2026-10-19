@@ -1,0 +1,48 @@
+% ==================== 1. 默认示例 ====================
+% 开源版以南开大学为默认示例；其他学校的同学可直接在下方修改配置。
+% 普通使用者无需改主题 .sty 文件，也不必另建学校预设。
+% 保留这两行即可使用南开的默认配色、校徽、建筑和校训。
+% 本地其他演示入口可预先设置 CampusPreset；main.tex 默认始终为 nku。
+\providecommand\CampusPreset{nku}
+\CampusSelect{\CampusPreset}
+
+% ==================== 2. 填写封面 ====================
+% title：主标题，可将 \CampusCoverTitle 直接替换为自己的汇报题目。
+% subtitle：副标题；author / institute / major / date：姓名 / 学院 / 专业 / 日期。
+% 封面和正文中读取这些字段的位置会同步更新；正文经历仍需在 examples/ 填写。
+% titlefont=brush 为当前书法标题，serif 为宋体标题；正文保持霞鹜文楷。
+% occasion 为空时不显示额外说明。
+\CampusInfo{
+ title={\CampusCoverTitle},subtitle={\CampusSchool\enspace ·\enspace 奖学金答辩汇报},
+ author={示例同学},institute={\CampusInstitute},major={计算机科学与技术},
+ date={2026 年 10 月},occasion={},titlefont=brush}
+
+% ==================== 3. 换颜色（可选） ====================
+% 取消下一行开头的 %，填写六位十六进制色值，不带 #。
+% primary：主色，渐变、分区带和强调色会随之变化；dark：深色；accent：点缀色。
+% 这里只改变主题配色，PNG / PDF 校徽和建筑的像素不会自动变色。
+% \CampusSetup{primary=235C81,dark=163E59,accent=B78E60}
+
+% ==================== 4. 换学校（可选） ====================
+% 以下均为示例，取消对应行的 % 后再按自己的学校修改。
+% school / english：学校中英文名；motto：总结页底部的校训。
+% 封面主标题与总结页校训独立：封面题目请修改上面的 title。
+% \CampusSetup{school={学校全称},english={UNIVERSITY NAME},motto={学校校训}}
+% \CampusInfo{title={自己的汇报题目},institute={学院名称},major={专业名称}}
+%
+% 校徽请准备两份“校徽＋校名”组合：彩色版用于白底，白色版用于渐变底。
+% 文件放在项目 assets/ 中，路径相对项目根目录；封面、目录和正文同步读取。
+% 两项应一起替换，否则仍可能出现南开标识；图片保持原比例。
+% \CampusSetup{logo={assets/my-mark.pdf},logo-white={assets/my-white-mark.pdf}}
+% 若暂时没有校徽，可取消下一行注释，使用上面配置的中英文校名。
+% \CampusSetup{logo={},logo-white={}}
+%
+% 建筑应换为自己学校的素材；透明背景、两侧高而中间低更适合当前封面。
+% trim 顺序为左、下、右、上，默认单位 bp；新图片先用 0 0 0 0，再按需裁边。
+% \CampusSetup{landmark={建筑名称},artwork={assets/my-campus.png},artwork-trim={0 0 0 0}}
+% 替换建筑后，还要在 CUSTOMIZE.md 指引下更新素材作者、来源及许可元数据。
+%
+% 学业数据以本校成绩单为准；以下只修改个人页的 GPA 分母与首门课程示例值。
+% \def\CampusGpaMax{4.0}
+% \def\CampusCourseScore{—} % 不需要示范成绩时改为占位。
+% 完整指标、课程名称和成绩请编辑 examples/profile.tex，不会由主题自动换算。

@@ -1,0 +1,403 @@
+{
+  "purpose": "Public sample images and computed placeholders for a research slide; not the demo author’s real research.",
+  "sources": [
+    {
+      "path": "assets/research/astronaut.png",
+      "url": "https://raw.githubusercontent.com/scikit-image/scikit-image/v0.19.3/skimage/data/astronaut.png",
+      "creator": "NASA, photograph of Eileen Collins",
+      "license_statement": "Public domain according to scikit-image data documentation",
+      "license_source": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.astronaut",
+      "sha256": "88431cd9653ccd539741b555fb0a46b61558b301d4110412b5bc28b5e3ea6cb5"
+    },
+    {
+      "path": "assets/research/coffee.png",
+      "url": "https://raw.githubusercontent.com/scikit-image/scikit-image/v0.19.3/skimage/data/coffee.png",
+      "creator": "Rachel Michetti, courtesy of Pikolo Espresso Bar",
+      "license_statement": "CC0-1.0 according to scikit-image data documentation",
+      "license_source": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.coffee",
+      "sha256": "cc02f8ca188b167c775a7101b5d767d1e71792cf762c33d6fa15a4599b5a8de7"
+    }
+  ],
+  "generator": "scripts/make_research_demo.py",
+  "derived_images": [
+    {
+      "path": "assets/research/inputs.png",
+      "sha256": "6ac9057e75032a56c10c0d422d380521cc324f25b5ffa923d93c211d3f3698da"
+    },
+    {
+      "path": "assets/research/keypoints.png",
+      "sha256": "cd3df83e361f4e076738ceb5e0bab4b928664b0d1bab3913f94610bf578518db"
+    },
+    {
+      "path": "assets/research/candidates.png",
+      "sha256": "4e7a67761e83117e9d90e59ee31a1d9ef94f4d7606b33b6befb17c2ae8753a03"
+    },
+    {
+      "path": "assets/research/verified.png",
+      "sha256": "0ac0cdfd9f2149e00c5240220c06f9707665f2e97dbbcb7f24fe84c0e8fbb5ce"
+    },
+    {
+      "path": "assets/research/patches.png",
+      "sha256": "597339512c20c396174f7690e6be90938fa001e83347e86adf06b7eab2e7808f"
+    },
+    {
+      "path": "assets/research/errors.png",
+      "sha256": "1d63999f2d509f3aaa610ba2058eb28b2af9f3e18c6623d93330988694ce7c86"
+    }
+  ],
+  "processing": {
+    "input_size": [
+      450,
+      250
+    ],
+    "crop_center_astronaut": [
+      0.5,
+      0.15
+    ],
+    "crop_center_coffee": [
+      0.5,
+      0.5
+    ],
+    "error_colormap": "MAGMA",
+    "error_mean_rgb_range": [
+      0,
+      80
+    ],
+    "methods": [
+      "ORB",
+      "nearest neighbors",
+      "ratio test 0.75",
+      "RANSAC homography 3px"
+    ],
+    "error_mask": "intersection of forward-query-valid and inverse-aligned-valid support"
+  },
+  "data": "measurements.json",
+  "limits": [
+    "Two images only; no general benchmark or scientific novelty claim.",
+    "Input photos do not depict the fictional author or their activities.",
+    "Captioned placeholders may be replaced by the user’s own evidence."
+  ],
+  "generator_sha256": "bdc7eabb2520fae7c3833dae88b752190c7cdb8e7c1e7e251c76f4f2c76b6eea",
+  "visualization": {
+    "main_case": "coffee",
+    "panel_size": [
+      900,
+      250
+    ],
+    "sampled_candidate_indices": [
+      458,
+      280,
+      532,
+      476,
+      579,
+      489,
+      498,
+      20,
+      429,
+      217,
+      451,
+      11,
+      392,
+      18,
+      546,
+      111,
+      98,
+      607,
+      96,
+      641,
+      1,
+      289,
+      530,
+      413,
+      39,
+      445,
+      235,
+      538,
+      512,
+      75,
+      356,
+      288,
+      156,
+      258,
+      422,
+      431
+    ],
+    "sampled_candidates": 36,
+    "sampled_retained_indices": [
+      458,
+      280,
+      532,
+      579,
+      489,
+      498,
+      20,
+      429,
+      217,
+      451,
+      11,
+      392,
+      18,
+      111,
+      98,
+      607,
+      96,
+      641,
+      1,
+      289,
+      530,
+      413,
+      39,
+      445,
+      235,
+      538,
+      512,
+      75,
+      356,
+      288,
+      156,
+      258,
+      422,
+      431
+    ],
+    "sampled_rejected_indices": [
+      476,
+      546
+    ],
+    "color_basis": "RANSAC mask on ratio-filtered candidates; same IDs before/after",
+    "keep_rgb": [
+      45,
+      231,
+      222
+    ],
+    "reject_rgb": [
+      255,
+      185,
+      74
+    ],
+    "crop_boxes_normalized": [
+      [
+        0.16444444444444445,
+        0.396,
+        0.36444444444444446,
+        0.796
+      ],
+      [
+        0.6466666666666666,
+        0.356,
+        0.8466666666666667,
+        0.756
+      ]
+    ],
+    "error_rgb_mean_range": [
+      0,
+      80
+    ],
+    "error_colormap_rgb": [
+      [
+        0,
+        0,
+        4
+      ],
+      [
+        2,
+        2,
+        13
+      ],
+      [
+        7,
+        6,
+        28
+      ],
+      [
+        13,
+        10,
+        41
+      ],
+      [
+        21,
+        14,
+        56
+      ],
+      [
+        29,
+        17,
+        71
+      ],
+      [
+        39,
+        18,
+        88
+      ],
+      [
+        49,
+        17,
+        101
+      ],
+      [
+        61,
+        15,
+        113
+      ],
+      [
+        71,
+        16,
+        120
+      ],
+      [
+        82,
+        19,
+        124
+      ],
+      [
+        92,
+        22,
+        127
+      ],
+      [
+        103,
+        27,
+        128
+      ],
+      [
+        114,
+        31,
+        129
+      ],
+      [
+        123,
+        35,
+        130
+      ],
+      [
+        134,
+        39,
+        129
+      ],
+      [
+        144,
+        42,
+        129
+      ],
+      [
+        155,
+        46,
+        127
+      ],
+      [
+        165,
+        49,
+        126
+      ],
+      [
+        176,
+        53,
+        123
+      ],
+      [
+        186,
+        56,
+        120
+      ],
+      [
+        197,
+        60,
+        116
+      ],
+      [
+        207,
+        64,
+        112
+      ],
+      [
+        217,
+        70,
+        107
+      ],
+      [
+        226,
+        77,
+        102
+      ],
+      [
+        234,
+        86,
+        97
+      ],
+      [
+        241,
+        96,
+        93
+      ],
+      [
+        245,
+        107,
+        92
+      ],
+      [
+        249,
+        120,
+        93
+      ],
+      [
+        251,
+        131,
+        95
+      ],
+      [
+        252,
+        144,
+        101
+      ],
+      [
+        253,
+        155,
+        107
+      ],
+      [
+        254,
+        169,
+        115
+      ],
+      [
+        254,
+        180,
+        123
+      ],
+      [
+        254,
+        193,
+        133
+      ],
+      [
+        254,
+        204,
+        143
+      ],
+      [
+        254,
+        216,
+        154
+      ],
+      [
+        253,
+        227,
+        165
+      ],
+      [
+        252,
+        240,
+        178
+      ],
+      [
+        252,
+        253,
+        191
+      ]
+    ],
+    "error_mask": "intersection of forward-query-valid and inverse-aligned-valid support",
+    "error_mean_before_after": [
+      29.366901397705078,
+      13.20213508605957
+    ]
+  }
+}

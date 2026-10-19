@@ -1,0 +1,25 @@
+{
+  "status": "Active local NKU trial replacement requested by user; visual approval and redistribution rights not asserted",
+  "tool": "built-in image_gen.imagegen",
+  "inputs": {
+    "style": "User supplied purchased illustration codex-clipboard-fe9d42b9-34af-4c17-90f1-b85fe854b7ab.png; redistribution permission not independently verified",
+    "architecture": {
+      "path": "outputs/nku-beamer/assets/main-building-reference.jpg",
+      "author": "Amazingloong",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Main_Building_of_Nankai_University_2015-08-04.jpg"
+    }
+  },
+  "steps": [
+    "New simpler illustration generated using style reference and real photograph",
+    "Targeted edit removes generated central pavilion and joins low wings"
+  ],
+  "prompts": [
+    "soft-v3-generation-prompt.txt",
+    "soft-v3-center-edit-prompt.txt"
+  ],
+  "asset_sha256": "d1e70a053e8a83e7c5072598133cf90dc2a6a82bc4054ba67b7dfcca98c406d2",
+  "commercial_or_redistribution_clearance_asserted": false,
+  "production_asset_replaced": true,
+  "asset": "panorama-soft-v3.png"
+}

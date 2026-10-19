@@ -1,0 +1,177 @@
+% Editable personal page. Delete records, not coordinates or grid lines.
+% Metrics: label/value/scope. Courses: score/name. Protect literal / with braces.
+\newcommand\NKUProfileMetrics{%
+ GPA/{—{\fontsize{11}{15}\selectfont /\CampusGpaMax}}/{[课程范围]},
+ 专业排名/{—{\fontsize{11}{15}\selectfont /—}}/{[年级与专业]},
+ 已获学分/—/{[培养方案范围]},
+ CET-4/{—{\fontsize{11}{15}\selectfont /710}}/{[考试年月]},
+ CET-6/{—{\fontsize{11}{15}\selectfont /710}}/{[考试年月]}}
+\newcommand\NKUProfileCourses{%
+ \CampusCourseScore/课程名称,—/课程名称,—/课程名称,—/课程名称,—/课程名称,
+ —/课程名称,—/课程名称,—/课程名称,—/课程名称,—/课程名称}
+% Keep institute/major names intact; the separator disappears at a line break.
+\newcommand\NKUProfileEducation{\mbox{\CampusSchool\enspace ·\enspace \NKUinstitute}%
+ \discretionary{}{}{\hbox{\enspace ·\enspace}}\mbox{\NKUmajor}}
+\newcommand\NKUProfileEducationNote{[起止年月]\quad [在读或毕业状态]}
+\newcommand\NKUProfileDirection{[学习方向或专业兴趣]}
+\newcommand\NKUProfileDirectionNote{[相关课程、技能或训练经历]}
+\newsavebox\NKUProfileTextBox
+\newsavebox\NKUProfileEducationBox
+\newsavebox\NKUProfileDirectionBox
+% Natural first-line baseline is retained; excessive input fails explicitly.
+\newcommand\NKUProfileFit[5]{%
+ \pgfmathsetmacro\NKUProfileFitWidth{#2}%
+ \ifpgfpicture
+  \begin{pgfinterruptpicture}%
+   \NKUProfileFitBox{#1}{#3}{#4}{#5}%
+   \global\setbox\NKUProfileTextBox=\copy\NKUProfileTextBox%
+  \end{pgfinterruptpicture}%
+ \else
+  \NKUProfileFitBox{#1}{#3}{#4}{#5}%
+ \fi}
+\newcommand\NKUProfileFitBox[4]{%
+ % Start the line before color whatsits, preserving the first text baseline.
+ \sbox\NKUProfileTextBox{{\normalfont #3\parbox[t]{\NKUProfileFitWidth mm}{\setlength\parskip{0pt}\centering\noindent #3#4\par}}}%
+ \ifdim\dimexpr\ht\NKUProfileTextBox+\dp\NKUProfileTextBox\relax>#2mm
+  \PackageError{Nankai}{Profile #1 exceeds its text area}
+   {Use at most two lines for course names and main background text; shorten other fields.}%
+ \fi}
+\newcommand\NKUprofile{\begingroup
+ \def\NKUProfileMetricCount{0}\def\NKUProfileCourseCount{0}%
+ \ifx\NKUProfileMetrics\empty\else
+  \foreach \record [count=\idx] in \NKUProfileMetrics
+   {\xdef\NKUProfileMetricCount{\idx}}%
+ \fi
+ \ifx\NKUProfileCourses\empty\else
+  \foreach \record [count=\idx] in \NKUProfileCourses
+   {\xdef\NKUProfileCourseCount{\idx}}%
+ \fi
+ \ifnum\NKUProfileMetricCount>5
+  \PackageError{Nankai}{Profile supports at most five metrics}{Remove a metric record.}\fi
+ \ifnum\NKUProfileCourseCount>10
+  \PackageError{Nankai}{Profile supports at most ten courses}{Remove a course record.}\fi
+ \NKUProfileFit{education}{131}{12}{\color{NKUInk}\raggedright\bfseries\fontsize{14}{18}\selectfont}{\NKUProfileEducation}%
+ \sbox\NKUProfileEducationBox{\usebox\NKUProfileTextBox}%
+ \def\NKUProfileEducationExtra{0}%
+ \ifdim\dimexpr\ht\NKUProfileEducationBox+\dp\NKUProfileEducationBox\relax>6mm
+  \def\NKUProfileEducationExtra{6.326}\fi
+ \NKUProfileFit{direction}{131}{12}{\color{NKUInk}\raggedright\bfseries\fontsize{14}{18}\selectfont}{\NKUProfileDirection}%
+ \sbox\NKUProfileDirectionBox{\usebox\NKUProfileTextBox}%
+ \def\NKUProfileDirectionExtra{0}%
+ \ifdim\dimexpr\ht\NKUProfileDirectionBox+\dp\NKUProfileDirectionBox\relax>6mm
+  \def\NKUProfileDirectionExtra{6.326}\fi
+ \pgfmathsetmacro\NKUProfileExtra{\NKUProfileEducationExtra+\NKUProfileDirectionExtra}%
+ \begin{frame}[plain]
+ \begin{tikzpicture}[remember picture,overlay]
+ \begin{scope}[shift={(current page.north west)},x=1mm,y=-1mm,
+  every node/.append style={outer sep=0}]
+ \clip (0,0) rectangle (256,144);
+ \fill[NKUPurple] (0,3) rectangle (2.6,12.3);
+ \node[anchor=north west,inner sep=0,text=NKUPurple,
+  font=\bfseries\fontsize{9.5}{13}\selectfont] at (5,3.1)
+  {\CampusSchool\enspace ·\enspace \NKUinstitute};
+ \node[anchor=north west,inner sep=0,text=NKUInk,
+  font=\bfseries\fontsize{12}{16}\selectfont] at (5,8.1)
+  {\ifnum\thesection<10 0\fi\thesection\enspace \insertsectionhead\enspace ·\enspace 个人背景与学业概览};
+ \node[anchor=north east,inner sep=0] at (250,2)
+  {\CampusBrand{34mm}{NKUPurple}};
+ \begin{scope}
+  \clip (11.5,15) rectangle (74.2,90);
+  \node[anchor=north west,inner sep=0] at (11.5,15)
+   {\includegraphics[width=62.7mm,height=75mm,keepaspectratio]{assets/student-portrait.jpg}};
+ \end{scope}
+ \node[anchor=north,inner sep=0,text=NKUPurple,
+  font=\bfseries\fontsize{29}{35}\selectfont] at (42.85,92.5) {\NKUauthor};
+ \node[anchor=north west,inner sep=0,text=NKUInk] at (11.5,107)
+  {\parbox{62.7mm}{\fontsize{10.7}{16}\selectfont
+   \textbf{年级：}[年级与培养层次]\\[.8mm]
+   \textbf{任职：}[职务名称]\\[.8mm]
+   \textbf{技能：}[核心技能]\\[.8mm]
+   \textbf{爱好：}[兴趣爱好]}};
+ % Background bands expand only when the main text needs a second line.
+ \shade[left color=NKUPale,right color=white] (86.5,15) rectangle (250,{26+\NKUProfileEducationExtra});
+ \fill[NKUPurple!65] (86.5,15) rectangle (87.8,{26+\NKUProfileEducationExtra});
+ \node[anchor=west,inner sep=0,text=NKUPurple,
+  font=\bfseries\fontsize{14}{18}\selectfont] at (90.5,20.5) {教育背景};
+ \node[anchor=north west,inner sep=0,text=NKUInk] at (119,15.7) {\usebox\NKUProfileEducationBox};
+ \NKUProfileFit{education note}{131}{5}{\color{NKUGray}\raggedright\fontsize{10.2}{14}\selectfont}{\NKUProfileEducationNote}
+ \node[anchor=north west,inner sep=0,text=NKUGray] at (119,{21.5+\NKUProfileEducationExtra}) {\usebox\NKUProfileTextBox};
+ \shade[left color=NKUPale,right color=white] (86.5,{29+\NKUProfileEducationExtra}) rectangle (250,{40+\NKUProfileExtra});
+ \fill[NKUPurple!65] (86.5,{29+\NKUProfileEducationExtra}) rectangle (87.8,{40+\NKUProfileExtra});
+ \node[anchor=west,inner sep=0,text=NKUPurple,
+  font=\bfseries\fontsize{14}{18}\selectfont] at (90.5,{34.5+\NKUProfileEducationExtra}) {学习方向};
+ \node[anchor=north west,inner sep=0,text=NKUInk] at (119,{29.7+\NKUProfileEducationExtra}) {\usebox\NKUProfileDirectionBox};
+ \NKUProfileFit{direction note}{131}{5}{\color{NKUGray}\raggedright\fontsize{10.2}{14}\selectfont}{\NKUProfileDirectionNote}
+ \node[anchor=north west,inner sep=0,text=NKUGray] at (119,{35.5+\NKUProfileExtra}) {\usebox\NKUProfileTextBox};
+ \ifnum\NKUProfileMetricCount>0
+  \draw[NKUPurple!28,line width=.45pt] (86.5,{44+\NKUProfileExtra}) rectangle (250,{74+\NKUProfileExtra});
+  \pgfmathsetmacro\profilewidth{163.5/\NKUProfileMetricCount}
+  \foreach \profilemetriclabel/\profilemetricvalue/\profilemetricscope [count=\idx from 0] in \NKUProfileMetrics{
+   \pgfmathsetmacro\profileleft{88+\profilewidth*\idx}
+   \pgfmathsetmacro\profileright{85+\profilewidth*(\idx+1)}
+   \pgfmathsetmacro\profilecenter{86.5+\profilewidth*(\idx+.5)}
+   \ifnum\idx>0
+    \draw[NKUGray!30,line width=.45pt] ({86.5+\profilewidth*\idx},{45.5+\NKUProfileExtra})--({86.5+\profilewidth*\idx},{72.5+\NKUProfileExtra});\fi
+   \fill[NKUPurple] (\profileleft,{45.5+\NKUProfileExtra}) rectangle (\profileright,{51.5+\NKUProfileExtra});
+   \NKUProfileFit{metric label}{\profilewidth-3}{5}{\color{white}\bfseries\fontsize{10.7}{14}\selectfont}{\profilemetriclabel}
+   \node[text=white,inner sep=0] at (\profilecenter,{48.5+\NKUProfileExtra}) {\usebox\NKUProfileTextBox};
+   \NKUProfileFit{metric value}{\profilewidth-3}{12}{\color{NKUPurple}\bfseries\fontsize{29}{34}\selectfont}{\profilemetricvalue}
+   \node[anchor=base,text=NKUPurple,inner sep=0,font=\bfseries\fontsize{29}{34}\selectfont] at (\profilecenter,{64.5+\NKUProfileExtra}) {\usebox\NKUProfileTextBox};
+   \NKUProfileFit{metric scope}{\profilewidth-3}{5}{\color{NKUGray}\fontsize{9}{12}\selectfont}{\profilemetricscope}
+   \node[anchor=base,text=NKUGray,inner sep=0,font=\fontsize{9}{12}\selectfont] at (\profilecenter,{70.5+\NKUProfileExtra}) {\usebox\NKUProfileTextBox};
+  }
+  \pgfmathsetmacro\profileheading{78.5+\NKUProfileExtra}
+ \else
+  \pgfmathsetmacro\profileheading{44+\NKUProfileExtra}
+ \fi
+ \ifnum\NKUProfileCourseCount>0
+  \pgfmathsetmacro\profiletop{\profileheading+9.5}
+  \pgfmathtruncatemacro\profilerows{ceil(\NKUProfileCourseCount/5)}
+  \pgfmathtruncatemacro\profilefirst{ceil(\NKUProfileCourseCount/\profilerows)}
+  \pgfmathtruncatemacro\profilesecond{\NKUProfileCourseCount-\profilefirst}
+  \pgfmathsetmacro\profilelimit{ifthenelse(\NKUProfileExtra>0,133.5,132)}
+  \pgfmathsetmacro\profilerowheight{min(44,\profilelimit-\profiletop)/\profilerows}
+  \pgfmathsetmacro\profilebottom{\profiletop+\profilerowheight*\profilerows}
+  \ifdim\profilerowheight mm<18mm
+   \PackageError{Nankai}{Profile background leaves insufficient course space}{Shorten education or direction to one line, or select at most five courses.}\fi
+  \expandafter\gdef\csname NKUProfileLongRow0\endcsname{0}
+  \expandafter\gdef\csname NKUProfileLongRow1\endcsname{0}
+  \foreach \score/\course [count=\idx from 0] in \NKUProfileCourses{
+   \pgfmathtruncatemacro\profilerow{ifthenelse(\idx<\profilefirst,0,1)}
+   \pgfmathtruncatemacro\profilecols{ifthenelse(\profilerow==0,\profilefirst,\profilesecond)}
+   \NKUProfileFit{course name}{163.5/\profilecols-3}{10}{\color{NKUInk}\fontsize{10.2}{14}\selectfont}{\course}
+   \ifdim\dimexpr\ht\NKUProfileTextBox+\dp\NKUProfileTextBox\relax>5mm
+    \expandafter\gdef\csname NKUProfileLongRow\profilerow\endcsname{1}\fi
+  }
+  \shade[left color=NKUPale,right color=white] (86.5,\profileheading) rectangle (250,{\profileheading+7.5});
+  \fill[NKUPurple!65] (86.5,\profileheading) rectangle (87.8,{\profileheading+7.5});
+  \node[anchor=west,text=NKUPurple,inner sep=0,font=\bfseries\fontsize{14}{18}\selectfont] at (90.5,{\profileheading+3.75}) {代表课程};
+  \draw[NKUPurple!28,line width=.45pt] (86.5,\profiletop) rectangle (250,\profilebottom);
+  \foreach \score/\course [count=\idx from 0] in \NKUProfileCourses{
+   \pgfmathtruncatemacro\profilerow{ifthenelse(\idx<\profilefirst,0,1)}
+   \pgfmathtruncatemacro\profilecol{\idx-\profilerow*\profilefirst}
+   \pgfmathtruncatemacro\profilecols{ifthenelse(\profilerow==0,\profilefirst,\profilesecond)}
+   \pgfmathsetmacro\profilewidth{163.5/\profilecols}
+   \pgfmathsetmacro\profilecenter{86.5+\profilewidth*(\profilecol+.5)}
+   \pgfmathsetmacro\profilerowtop{\profiletop+\profilerowheight*\profilerow}
+   \ifnum\profilecol>0
+    \ifnum\profilefirst=\profilesecond
+     \ifnum\profilerow=0
+      \draw[NKUGray!30,line width=.45pt] ({86.5+\profilewidth*\profilecol},{\profiletop+1.5})--({86.5+\profilewidth*\profilecol},{\profilebottom-1.5});\fi
+    \else
+     \draw[NKUGray!30,line width=.45pt] ({86.5+\profilewidth*\profilecol},{\profilerowtop+1.5})--({86.5+\profilewidth*\profilecol},{\profilerowtop+\profilerowheight-1.5});\fi
+   \fi
+   \NKUProfileFit{course name}{\profilewidth-3}{10}{\color{NKUInk}\fontsize{10.2}{14}\selectfont}{\course}
+   \pgfmathsetmacro\profilevaluey{\profilerowtop+\profilerowheight/2+.8}
+   \pgfmathsetmacro\profilelabely{\profilerowtop+\profilerowheight/2+6.8}
+   \ifnum\csname NKUProfileLongRow\profilerow\endcsname=1
+    \pgfmathsetmacro\profilevaluey{\profilevaluey-3}
+   \fi
+   \ifdim\dimexpr\ht\NKUProfileTextBox+\dp\NKUProfileTextBox\relax>5mm
+    \pgfmathsetmacro\profilelabely{\profilerowtop+\profilerowheight-6.4}\fi
+   \node[anchor=base,text=NKUInk,inner sep=0,font=\fontsize{10.2}{14}\selectfont] at (\profilecenter,\profilelabely) {\usebox\NKUProfileTextBox};
+   \node[anchor=base,text=NKUPurple,inner sep=0,font=\bfseries\fontsize{23.5}{29}\selectfont] at (\profilecenter,\profilevaluey) {\score};
+  }
+ \fi
+ \node[text=NKUPurple,inner sep=0,font=\fontsize{8.5}{11}\selectfont] at (128,140) {\insertframenumber};
+ \end{scope}\end{tikzpicture}\end{frame}\endgroup}

@@ -1,0 +1,18 @@
+Current selected illustration: central pavilion retained and towers raised.
+Original generated PNG bytes are preserved. Scholarship Beamer contributors
+license their Copyright and Similar Rights that they hold and have authority
+to license in this file under CC BY-SA 4.0. See assets/BUILDING-LICENSE.txt
+for the exact file, attribution, modifications and rights scope.
+
+Earlier generation used purchased artwork as a style reference and an
+Amazingloong CC BY-SA 4.0 photograph for architectural identity. These
+reference files themselves are not distributed here. The reference history
+is retained in selected-tall-provenance.json and adjacent prompts. Historical
+photo-only/soft-v3 assets are not included in this upload package.
+
+The author confirms that the current image is AI-generated using public
+images. The current contributor licence does not assert complete clearance
+of third-party rights, does not license university marks, and does not
+assert copyrightability of all AI-generated elements in all jurisdictions.
+This notice does not make a finding of infringement; generation history and
+the limits of the contributor licence are separate facts.

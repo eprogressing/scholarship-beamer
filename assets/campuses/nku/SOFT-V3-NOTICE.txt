@@ -1,0 +1,11 @@
+Local visual trial replacement, 2026-10-19.
+The user explicitly requested replacing the building to inspect the real deck.
+This artwork used a user-supplied purchased illustration as a style reference
+and Amazingloong's CC BY-SA 4.0 photograph as an architectural reference.
+The photograph's CC licence does not itself clear the supplied style source
+or establish a redistribution licence for this new candidate.
+No redistribution clearance is asserted; this notice does not convert it to
+MIT, CC0, or an automatically approved open-source asset.
+The previous photo-only artwork remains at assets/campus-building-outlined.png
+and assets/campus-panorama.pdf under its separate BUILDING-LICENSE.txt.
+See soft-v3-provenance.json and the two prompt files for the actual chain.

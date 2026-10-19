@@ -1,0 +1,207 @@
+% Editable fictional examples. Replace numbers, dates, work and photos together.
+\def\NKUPracticeTitle{社区数字生活需求调研}
+\def\NKUPracticePeriod{[实践年月]}
+\def\NKUPracticeLocation{[社区名称]}
+\def\NKUPracticeDays{7}
+\def\NKUPracticeSites{3}
+\def\NKUPracticeInterviews{12}
+% photo / scene / personal work. Main scene, interview detail, preparation detail.
+\def\NKUPracticePhotos{%
+ {assets/campus-scenes/fieldwork.jpg}/社区走访/了解实际使用情境,
+ {assets/campus-scenes/interview.jpg}/现场访谈/记录具体困难,
+ {assets/practice-service/research-preparation.jpg}/前期准备/梳理提纲与路线}
+\def\NKUPracticeContribution{设计访谈提纲，参与社区走访；\\整理访谈记录，形成需求清单与改进建议。}
+% Empty path shows a readable native excerpt. A real image is contained, not cropped.
+\def\NKUPracticeEvidenceFile{}
+\def\NKUPracticeFinding{讲解之后的独立操作，\\仍需要可反复查阅的支持。}
+% issue / observation / recommendation; no invented percentages or official seals.
+\def\NKUPracticeEvidenceRows{%
+ 界面辨识/常用入口与提示不易发现/{标注关键入口\\突出操作提示},
+ 步骤记忆/多步操作难以独立复现/{提供图文操作卡\\安排重复练习},
+ 信息核验/陌生链接的来源难判断/{整理核验步骤\\标明求助渠道}}
+\def\NKUPracticeOutput{调研报告、需求清单与改进建议}
+
+\def\NKUVolunteerHours{48}
+\def\NKUVolunteerSessions{8}
+\def\NKUVolunteerPeriod{2025—2026学年}
+% date / specific activity / personal role / personal work. Select 1--5 records.
+\def\NKUVolunteerExperiences{%
+ 2025.10/社区智能手机小课堂/讲解志愿者/分步讲解常用操作,
+ 2025.12/社区环境清洁行动/现场志愿者/负责指定区域清理,
+ 2026.03/校园开放日引导服务/引导志愿者/提供路线指引与现场协助,
+ 2026.04/社区科普体验日/科普志愿者/完成实验演示与互动答疑,
+ 2026.05/社区阅读空间整理/图书志愿者/协助书籍分类与上架}
+\def\NKUVolunteerFeatured{1}
+\def\NKUVolunteerFocus{整理[高频问题]，形成[可复用操作指南]。}
+% Five selected pictures may illustrate fewer than five activities.
+% photo / activity / work caption. The digital-assistance lead keeps its full 3:2 frame.
+\def\NKUVolunteerPhotos{%
+ {assets/campus-scenes/volunteer.jpg}/数字助老/操作讲解与陪伴练习,
+ {assets/practice-service/environment-cleanup.jpg}/环境清洁/公共空间清洁,
+ {assets/practice-service/campus-guidance.jpg}/校园引导/路线讲解与现场协助,
+ {assets/practice-service/science-outreach.jpg}/社区科普/实验演示与答疑,
+ {assets/practice-service/library-service.jpg}/图书服务/分类整理与上架}
+
+\newsavebox\NKUServiceTextBox
+\newsavebox\NKUVolunteerFocusBox
+\newcommand\NKUservicefit[5]{%
+ \begin{pgfinterruptpicture}%
+  \sbox\NKUServiceTextBox{\parbox[t]{#2mm}{\setlength\parskip{0pt}\raggedright\noindent #4#5\par}}%
+  \ifdim\dimexpr\ht\NKUServiceTextBox+\dp\NKUServiceTextBox\relax>#3mm
+   \PackageError{Nankai}{Practice service #1 exceeds its text area}{Shorten the field; retain the current font size.}\fi
+  \global\setbox\NKUServiceTextBox=\copy\NKUServiceTextBox
+ \end{pgfinterruptpicture}}
+\newcommand\NKUservicecount[3]{%
+ \def\NKUServiceCount{0}%
+ \foreach \entry [count=\serviceidx] in #1 {\xdef\NKUServiceCount{\serviceidx}}%
+ \ifnum\NKUServiceCount=#2\relax\else
+  \PackageError{Nankai}{Practice service #3 needs #2 entries}{Select representative content for this layout.}\fi}
+\newcommand\NKUservicecaption[5]{%
+ \NKUservicefit{photo caption}{#3}{4.6}{\fontsize{9.2}{13}\selectfont}%
+  {{\color{NKUPurple}\bfseries#4}\color{NKUInk}#5}
+ \node[anchor=north west,inner sep=0] at (#1,#2) {\usebox\NKUServiceTextBox};}
+\newcommand\NKUpracticemetric[4]{%
+ \NKUservicefit{practice metric}{30}{12}{\centering\color{NKUInk}\fontsize{10.4}{13}\selectfont}%
+  {{\color{NKUPurple}\bfseries\fontsize{22}{26}\selectfont#2}\hspace{.8mm}#3}
+ \node[anchor=north west,inner sep=0] at (#1,18) {\usebox\NKUServiceTextBox};
+ \node[inner sep=0,text=NKUInk,font=\fontsize{9.5}{13}\selectfont] at ({#1+15},32) {#4};}
+
+\newcommand\NKUpracticeevidence{%
+ \ifx\NKUPracticeEvidenceFile\empty
+  \node[anchor=north west,inner sep=0,text=NKUPurple,font=\bfseries\fontsize{12}{16}\selectfont]
+   at (151.5,44) {主要发现与行动建议};
+  \fill[NKUPale!70!white] (151.5,53) rectangle (250,66.5);
+  \fill[NKUPurple!65] (151.5,53) rectangle (152.4,66.5);
+  \NKUservicefit{main finding}{90.5}{11.5}{\color{NKUDark}\bfseries\fontsize{11.8}{16}\selectfont}{\NKUPracticeFinding}
+  \node[anchor=north west,inner sep=0] at (155.5,55) {\usebox\NKUServiceTextBox};
+  \foreach \xx/\heading in {151.5/观察与问题,204/改进建议}{%
+   \node[anchor=north west,inner sep=0,text=NKUPurple,font=\bfseries\fontsize{9.8}{13}\selectfont]
+    at (\xx,70.5) {\heading};}
+  \draw[NKUPurple!40,line width=.55pt] (151.5,76)--(250,76);
+  \NKUservicecount{\NKUPracticeEvidenceRows}{3}{evidence rows}
+  \foreach \issue/\observation/\recommendation [count=\evidenceidx from 0] in \NKUPracticeEvidenceRows{%
+   \pgfmathsetmacro\evidencey{79+16*\evidenceidx}
+   \pgfmathtruncatemacro\evidencenum{\evidenceidx+1}
+   \NKUservicefit{issue heading}{45}{4.5}{\color{NKUPurple}\bfseries\fontsize{9.8}{13}\selectfont}{0\evidencenum\enspace\issue}
+   \node[anchor=north west,inner sep=0] at (151.5,\evidencey) {\usebox\NKUServiceTextBox};
+   \NKUservicefit{observation}{45}{9.5}{\color{NKUInk}\fontsize{9.6}{13}\selectfont}{\observation}
+   \node[anchor=north west,inner sep=0] at (151.5,{\evidencey+5}) {\usebox\NKUServiceTextBox};
+   \NKUservicefit{recommendation}{46}{12}{\color{NKUInk}\fontsize{10}{14}\selectfont}{\recommendation}
+   \node[anchor=north west,inner sep=0] at (204,{\evidencey+3}) {\usebox\NKUServiceTextBox};
+   \ifnum\evidenceidx<2
+    \draw[NKUPurple!14,line width=.35pt] (151.5,{\evidencey+14.5})--(250,{\evidencey+14.5});\fi
+  }
+  \draw[NKUPurple!35,line width=.5pt] (151.5,126.5)--(250,126.5);
+  \NKUservicefit{practice output}{98.5}{6}{\color{NKUInk}\bfseries\fontsize{9.8}{13}\selectfont}{实践产出：\NKUPracticeOutput}
+  \node[anchor=north west,inner sep=0] at (151.5,129) {\usebox\NKUServiceTextBox};
+ \else
+  \draw[NKUPurple!28,line width=.5pt] (151.5,44) rectangle (250,132);
+  \IfFileExists{\NKUPracticeEvidenceFile}{%
+   \node[inner sep=0] at (200.75,88)
+    {\includegraphics[width=94.5mm,height=84mm,keepaspectratio]{\NKUPracticeEvidenceFile}};
+  }{\PackageError{Nankai}{Practice evidence file not found}{Check NKUPracticeEvidenceFile.}}%
+ \fi}
+
+\newcommand\NKUpracticepage{\NKUdetailpage{社会实践}{%
+ \NKUservicecount{\NKUPracticePhotos}{3}{practice photographs}
+ \NKUservicefit{project title}{125}{8}{\color{NKUDark}\bfseries\fontsize{16.5}{20}\selectfont}{\NKUPracticeTitle}
+ \node[anchor=north west,inner sep=0] at (11.5,18) {\usebox\NKUServiceTextBox};
+ \NKUservicefit{practice period and location}{125}{4.8}{\color{NKUInk}\fontsize{9.6}{13}\selectfont}%
+  {时间：\NKUPracticePeriod\enspace ·\enspace 地点：\NKUPracticeLocation}
+ \node[anchor=north west,inner sep=0] at (11.5,29) {\usebox\NKUServiceTextBox};
+ \NKUpracticemetric{146}{\NKUPracticeDays}{天}{实践天数}
+ \NKUpracticemetric{182.5}{\NKUPracticeSites}{处}{走访点位}
+ \NKUpracticemetric{219}{\NKUPracticeInterviews}{份}{有效访谈}
+ \draw[NKUPurple!40,line width=.55pt] (11.5,38)--(250,38);
+ \foreach \photo/\scene/\duty [count=\serviceidx from 0] in \NKUPracticePhotos{%
+  \ifcase\serviceidx
+   \NKUstudentphoto{11.5}{44}{80}{53.3333}{\photo}
+   \NKUservicecaption{11.5}{100.3}{80}{\scene}{\enspace |\enspace \duty}
+  \or
+   \NKUstudentphoto{94.5}{44}{48.5}{24.5}{\photo}
+   \NKUservicecaption{94.5}{70.5}{48.5}{\scene}{\enspace |\enspace \duty}
+  \or
+   \NKUstudentphoto{94.5}{80}{48.5}{24.5}{\photo}
+   \NKUservicecaption{94.5}{106.5}{48.5}{\scene}{\enspace |\enspace \duty}
+  \fi}
+ \node[anchor=north west,inner sep=0,text=NKUPurple,font=\bfseries\fontsize{11.5}{15}\selectfont]
+  at (11.5,114) {本人承担};
+ \NKUservicefit{personal contribution}{131.5}{16}{\color{NKUInk}\fontsize{10.5}{15}\selectfont}{\NKUPracticeContribution}
+ \node[anchor=north west,inner sep=0] at (11.5,121) {\usebox\NKUServiceTextBox};
+ \NKUpracticeevidence
+ \NKUexamplefoot{实践内容与数字为虚构示例，场景图片由AI生成}
+}}
+
+\newcommand\NKUvolunteerpage{\NKUdetailpage{志愿服务}{%
+ \def\NKUVolunteerRecordCount{0}%
+ \ifx\NKUVolunteerExperiences\empty\else
+  \foreach \entry [count=\recordidx] in \NKUVolunteerExperiences {\xdef\NKUVolunteerRecordCount{\recordidx}}\fi
+ \ifnum\NKUVolunteerRecordCount<1
+  \PackageError{Nankai}{Volunteer overview needs at least one experience}{Fill a specific activity, date and personal work.}\fi
+ \ifnum\NKUVolunteerRecordCount>5
+  \PackageError{Nankai}{Volunteer overview supports at most five experiences}{Select representative experiences.}\fi
+ \ifnum\NKUVolunteerFeatured<1
+  \PackageError{Nankai}{Volunteer featured index is out of range}{Select an experience number.}\fi
+ \ifnum\NKUVolunteerFeatured>\NKUVolunteerRecordCount
+  \PackageError{Nankai}{Volunteer featured index is out of range}{Select an experience number.}\fi
+ \NKUservicecount{\NKUVolunteerPhotos}{5}{volunteer photographs}
+ \node[anchor=north west,inner sep=0,text=NKUInk,font=\fontsize{10.5}{14}\selectfont]
+  at (11.5,18) {累计志愿服务};
+ \NKUservicefit{volunteer metrics}{105}{21}{\color{NKUInk}\fontsize{11}{15}\selectfont}%
+  {{\color{NKUPurple}\bfseries\fontsize{44}{46}\selectfont\NKUVolunteerHours}\hspace{1mm}小时\hspace{5mm}%
+   参与\hspace{1mm}{\color{NKUPurple}\bfseries\fontsize{22}{26}\selectfont\NKUVolunteerSessions}\hspace{.6mm}次}
+ \node[anchor=north west,inner sep=0] at (11.5,25) {\usebox\NKUServiceTextBox};
+ \NKUservicefit{volunteer period}{105}{4.5}{\color{NKUInk}\fontsize{9.5}{13}\selectfont}{\NKUVolunteerPeriod\enspace ·\enspace 个人累计}
+ \node[anchor=north west,inner sep=0] at (11.5,47) {\usebox\NKUServiceTextBox};
+ \node[anchor=north west,inner sep=0,text=NKUPurple,font=\bfseries\fontsize{11.8}{16}\selectfont]
+  at (11.5,55) {代表服务经历};
+ \draw[NKUPurple!30,line width=.5pt] (11.5,61.5)--(116.5,61.5);
+ % Measure the contribution once; keep it with the selected experience.
+ % Fewer records may use up to four lines of specific work and output.
+ \def\volunteerfocusmax{8.2}%
+ \ifnum\NKUVolunteerRecordCount<4 \def\volunteerfocusmax{21}\fi
+ \NKUservicefit{featured contribution}{80}{\volunteerfocusmax}{\color{NKUInk}\fontsize{9.4}{13}\selectfont}%
+  {{\color{NKUPurple}\bfseries 产出：}\NKUVolunteerFocus}
+ \global\setbox\NKUVolunteerFocusBox=\copy\NKUServiceTextBox
+ \pgfmathsetmacro\volunteerfocusheight{(\the\ht\NKUVolunteerFocusBox+\the\dp\NKUVolunteerFocusBox)/1mm}
+ \pgfmathsetmacro\volunteerfocusextra{\volunteerfocusheight+3.5}
+ \pgfmathsetmacro\recordstep{min(18,(59-\volunteerfocusextra)/max(1,\NKUVolunteerRecordCount-1))}
+ \pgfmathsetmacro\recordlineend{66.8+\recordstep*(\NKUVolunteerRecordCount-1)}
+ \ifnum\NKUVolunteerFeatured<\NKUVolunteerRecordCount
+  \pgfmathsetmacro\recordlineend{\recordlineend+\volunteerfocusextra}\fi
+ \ifnum\NKUVolunteerRecordCount>1
+  \draw[NKUPurple!25,line width=.5pt] (12.5,66.8)--(12.5,\recordlineend);\fi
+ \foreach \date/\activity/\role/\work [count=\recordidx from 1] in \NKUVolunteerExperiences{%
+  \pgfmathsetmacro\recordy{65+\recordstep*(\recordidx-1)}
+  \ifnum\recordidx>\NKUVolunteerFeatured
+   \pgfmathsetmacro\recordy{\recordy+\volunteerfocusextra}\fi
+  \ifnum\recordidx=\NKUVolunteerFeatured
+   \fill[NKUPale] (14.5,{\recordy-1.5}) rectangle (116.5,{\recordy+12.5+\volunteerfocusheight});
+   \node[anchor=north west,inner sep=0] at (36.5,{\recordy+11}) {\usebox\NKUVolunteerFocusBox};\fi
+  \fill[NKUPurple] (12.5,{\recordy+1.8}) circle (.65mm);
+  \NKUservicefit{experience date}{18}{4.4}{\color{NKUGray}\fontsize{8.4}{12}\selectfont}{\date}
+  \node[anchor=north west,inner sep=0] at (16,\recordy) {\usebox\NKUServiceTextBox};
+  \NKUservicefit{experience title}{80}{4.7}{\color{NKUInk}\bfseries\fontsize{10.2}{14}\selectfont}{\activity}
+  \node[anchor=north west,inner sep=0] at (36.5,\recordy) {\usebox\NKUServiceTextBox};
+  \NKUservicefit{personal role and work}{80}{4.5}{\color{NKUInk}\fontsize{9.3}{13}\selectfont}{\role\enspace ·\enspace \work}
+  \node[anchor=north west,inner sep=0] at (36.5,{\recordy+5.5}) {\usebox\NKUServiceTextBox};
+ }
+ \foreach \photo/\activity/\duty [count=\serviceidx from 0] in \NKUVolunteerPhotos{%
+  \ifcase\serviceidx
+   \NKUstudentphoto{126}{18}{78}{52}{\photo}
+   \NKUservicecaption{126}{73.5}{78}{\activity}{\enspace |\enspace \duty}
+  \or
+   \NKUstudentphoto{207}{18}{43}{23}{\photo}
+   \NKUservicecaption{207}{43}{43}{\activity}{}
+  \or
+   \NKUstudentphoto{207}{50}{43}{23}{\photo}
+   \NKUservicecaption{207}{75}{43}{\activity}{}
+  \or
+   \NKUstudentphoto{126}{85}{60.5}{40.3333}{\photo}
+   \NKUservicecaption{126}{128.3}{60.5}{\activity}{\enspace |\enspace \duty}
+  \or
+   \NKUstudentphoto{189.5}{85}{60.5}{40.3333}{\photo}
+   \NKUservicecaption{189.5}{128.3}{60.5}{\activity}{\enspace |\enspace \duty}
+  \fi}
+ \NKUexamplefoot{服务经历与数字为虚构示例，场景图片由AI生成}
+}}

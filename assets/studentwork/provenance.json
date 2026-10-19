@@ -1,0 +1,75 @@
+{
+  "assets": [
+    {
+      "path": "coordination.png",
+      "sha256": "eb773b60112e2bf08b2c66544904f08f5d295f99e53c3920dff90be379ac0dab",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "coordination",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "event-prep.png",
+      "sha256": "c5c0250a609636270678e8e7ec16f89b68afc5be08f98041a618b6629f0e1b50",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "event-prep",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "event-live.png",
+      "sha256": "79b3d19b27ad18c571ebcc63276e452c5756d889e475c28f3d917cecf2610213",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "event-live",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "campus-reporting.png",
+      "sha256": "4dc4109c4080c0828ae4f236bcd81ba4ddb692972bf0df3571d2572cce0b87cd",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "campus-reporting",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "content-editing.png",
+      "sha256": "ba8208e75556d649e0aca757a26021c5a6c01c3f2d73210f98912f012aa97078",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "content-editing",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    }
+  ],
+  "prompts": "prompts.json"
+}

@@ -1,0 +1,312 @@
+[
+  {
+    "path": "assets/AI-EXAMPLES-LICENSE.txt",
+    "bytes": 2009,
+    "sha256": "dbdef4d493f71d87e5be18c6008ee1cfbbbb9ed109cf7d5c31eb23017a26cb77"
+  },
+  {
+    "path": "assets/BUILDING-LICENSE.txt",
+    "bytes": 2967,
+    "sha256": "af3fc4869c60ebc3704b4bb6d2f6a24dc22b0037fead337c460f0c834c0f369c"
+  },
+  {
+    "path": "assets/award-laurel.tex",
+    "bytes": 706,
+    "sha256": "c215eb3a2e08aea39b1a5a51866d519917e517f37e8985af0e6a9569c3d9c483"
+  },
+  {
+    "path": "assets/building-comic-prompt.txt",
+    "bytes": 2751,
+    "sha256": "82b601cd3b4bc3aea2c308ef98aa4f4cde414ec5e0620312c6dfc01db7c85d70"
+  },
+  {
+    "path": "assets/building-join-prompt.txt",
+    "bytes": 1829,
+    "sha256": "483d915d687a875f10f1db936665d3e433f344090b65f28474de6a2425819072"
+  },
+  {
+    "path": "assets/building-provenance.json",
+    "bytes": 3593,
+    "sha256": "ed6bac67fc6de34730e6202c2a6705901d107bae4ec2abebf83d08b78fdacee2"
+  },
+  {
+    "path": "assets/building-redraw-prompt.txt",
+    "bytes": 2656,
+    "sha256": "08ee0e1f70290b2bd5dd30b3a0bc0c2df86e6c746ec273f0707587dfe692faaa"
+  },
+  {
+    "path": "assets/building-refinement-prompt.txt",
+    "bytes": 967,
+    "sha256": "947e44f96d33e335aaa533b78dd399ca21598ee3937d72d715379c30c1ac3e1d"
+  },
+  {
+    "path": "assets/building-warmth-prompt.txt",
+    "bytes": 2156,
+    "sha256": "7b040ffdabbce9b67115abd8db75420e59977fc77ecc27261489444a3a7ee694"
+  },
+  {
+    "path": "assets/campus-scenes/fieldwork.jpg",
+    "bytes": 313709,
+    "sha256": "0ee361780e532930cd9767fe7daddd9c71708beb4418f42c01cce2ae27ad50c3"
+  },
+  {
+    "path": "assets/campus-scenes/interview.jpg",
+    "bytes": 223486,
+    "sha256": "6eb1c32b92284520a32564f6525dca26b6160de049eba7658ef5c8886925edc7"
+  },
+  {
+    "path": "assets/campus-scenes/meeting.jpg",
+    "bytes": 194666,
+    "sha256": "1e71d89678c66230f0ca701d36085058c2d074550e317159afdee51f6d8b3dcd"
+  },
+  {
+    "path": "assets/campus-scenes/prompts.json",
+    "bytes": 3530,
+    "sha256": "dec2ee3cdc5baa191b3957191e693859da55c3590d87880f1f3029433118b49d"
+  },
+  {
+    "path": "assets/campus-scenes/provenance.json",
+    "bytes": 1725,
+    "sha256": "543676c63ddaf0d99b138a23947e9bbf2974f28f3c31d976cababc541c1337e8"
+  },
+  {
+    "path": "assets/campus-scenes/volunteer.jpg",
+    "bytes": 213572,
+    "sha256": "146fb6c54787550d371e85ac6c0b7a658d4d761b330a8185c5df780e8b69584d"
+  },
+  {
+    "path": "assets/campuses/BRAND-NOTICE.txt",
+    "bytes": 900,
+    "sha256": "206b93dbbbb276c34e7288999f57cd93c23b52af45c490819757ae2e47bcc496"
+  },
+  {
+    "path": "assets/campuses/brand-provenance.json",
+    "bytes": 1082,
+    "sha256": "adb7954204f14d9349e5d35a88bad3c059e8bb5d7f2c88d182fa16fe7828aa83"
+  },
+  {
+    "path": "assets/campuses/nku/SELECTED-TALL-NOTICE.txt",
+    "bytes": 1160,
+    "sha256": "8187bef0a54878cd3752bc7f7d7517a0544cf778221a8e7eb7f39fab5be4e61e"
+  },
+  {
+    "path": "assets/campuses/nku/SOFT-V3-NOTICE.txt",
+    "bytes": 773,
+    "sha256": "60781b100d7387be3f6cceeee0d097e0f6f5ce414287db74de61ca51d4501d4d"
+  },
+  {
+    "path": "assets/campuses/nku/brand-white.pdf",
+    "bytes": 144916,
+    "sha256": "74142c101128fc2d9ea0afc4a4094edfc6577047c39b80400bd1536375497ce7"
+  },
+  {
+    "path": "assets/campuses/nku/brand.pdf",
+    "bytes": 611498,
+    "sha256": "cdc13c30bb1a545294c5a4e98f2d1ea94a87db25c42bce2b0c5aa0f8ecf0350d"
+  },
+  {
+    "path": "assets/campuses/nku/panorama-selected-tall.png",
+    "bytes": 872774,
+    "sha256": "db66d0da6e0089f0ec312b3877cc05593645512292677c296ec2eac55b95b768"
+  },
+  {
+    "path": "assets/campuses/nku/selected-tall-edit-prompt.txt",
+    "bytes": 1627,
+    "sha256": "202a5c11c3936852cd74902fd58457870b1e7d3a64ff77b786e47b3868f26d33"
+  },
+  {
+    "path": "assets/campuses/nku/selected-tall-provenance.json",
+    "bytes": 2238,
+    "sha256": "113119121ea3f8d4f47e0fc1e00a1bc0982fb9221bd717c61d2f8535cb82c999"
+  },
+  {
+    "path": "assets/campuses/nku/soft-v3-center-edit-prompt.txt",
+    "bytes": 1434,
+    "sha256": "53072714bbc521bfe361dbe138ac0f529134f19a5ce9ab7ba0c4a896903efcab"
+  },
+  {
+    "path": "assets/campuses/nku/soft-v3-generation-prompt.txt",
+    "bytes": 1817,
+    "sha256": "88ffc832d2ed95e0354ad189c4dfbfd57cfae6c799462b826c9008717d046203"
+  },
+  {
+    "path": "assets/campuses/nku/soft-v3-provenance.json",
+    "bytes": 1111,
+    "sha256": "6db1a96a9fa2b6730389dcf34604f79dec296fcc38820c62dd7ffd3b2408eb3a"
+  },
+  {
+    "path": "assets/compression-map.json",
+    "bytes": 8678,
+    "sha256": "24ec697dc54a5082d8a8fa46332cee8a404e0117197316031fae88981f237bf7"
+  },
+  {
+    "path": "assets/licenses/CC-BY-SA-4.0.txt",
+    "bytes": 20138,
+    "sha256": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5"
+  },
+  {
+    "path": "assets/practice-service/campus-guidance.jpg",
+    "bytes": 250656,
+    "sha256": "70530dce9010e008f1282af5bd3bade32ef89995d01bcebd7450c113754db6b3"
+  },
+  {
+    "path": "assets/practice-service/environment-cleanup.jpg",
+    "bytes": 354307,
+    "sha256": "2051b033e585ffc5764f4a699213640030114f4054ee2f57a8dbd1cd1a128a38"
+  },
+  {
+    "path": "assets/practice-service/library-service.jpg",
+    "bytes": 235604,
+    "sha256": "4c8eacf3cc8ae8b5f4daa5fc6d877e37152d4614bd6547ea2ea4a66b3fdd8d3f"
+  },
+  {
+    "path": "assets/practice-service/prompts.json",
+    "bytes": 8660,
+    "sha256": "e5f961e5a63d06f3a9f6a77f15a1b0356e616e3b21d5542905a9173cba0aea10"
+  },
+  {
+    "path": "assets/practice-service/provenance.json",
+    "bytes": 2942,
+    "sha256": "5c4b725b787ab082d2e5e3fadfae122e1438e4294c2ee4e0668de7e7d4605a7e"
+  },
+  {
+    "path": "assets/practice-service/research-preparation.jpg",
+    "bytes": 246234,
+    "sha256": "b0f32b6ea11fb3e91fc1cd8f56f805ff0909a1e185d5e3186f01e8bdcff01170"
+  },
+  {
+    "path": "assets/practice-service/science-outreach.jpg",
+    "bytes": 215539,
+    "sha256": "b319f4bb0e7677dfe85fcc11abb0cbe6bbf1c3e5c30e3e9fec438d65ec90beed"
+  },
+  {
+    "path": "assets/research/candidates.png",
+    "bytes": 364642,
+    "sha256": "4e7a67761e83117e9d90e59ee31a1d9ef94f4d7606b33b6befb17c2ae8753a03"
+  },
+  {
+    "path": "assets/research/errors.png",
+    "bytes": 396053,
+    "sha256": "1d63999f2d509f3aaa610ba2058eb28b2af9f3e18c6623d93330988694ce7c86"
+  },
+  {
+    "path": "assets/research/inputs.png",
+    "bytes": 384576,
+    "sha256": "6ac9057e75032a56c10c0d422d380521cc324f25b5ffa923d93c211d3f3698da"
+  },
+  {
+    "path": "assets/research/keypoints.png",
+    "bytes": 386053,
+    "sha256": "cd3df83e361f4e076738ceb5e0bab4b928664b0d1bab3913f94610bf578518db"
+  },
+  {
+    "path": "assets/research/measurements.json",
+    "bytes": 5634,
+    "sha256": "cd792f65c08b91e82e6afc1137217a4a9840f84a8ba7fe6e1237a9c57df5ab8d"
+  },
+  {
+    "path": "assets/research/measurements.tex",
+    "bytes": 1105,
+    "sha256": "404bcbc879af96a6e79cab3d5bc0bdfbfe386a9aa0c51d47bef0b43f4a046e3f"
+  },
+  {
+    "path": "assets/research/patches.png",
+    "bytes": 247100,
+    "sha256": "597339512c20c396174f7690e6be90938fa001e83347e86adf06b7eab2e7808f"
+  },
+  {
+    "path": "assets/research/provenance.json",
+    "bytes": 6810,
+    "sha256": "06cebb382bd27680b4ae95aeac68e1b2defa6bc0ba40a060ae8394c4b3ba65eb"
+  },
+  {
+    "path": "assets/research/verified.png",
+    "bytes": 365045,
+    "sha256": "0ac0cdfd9f2149e00c5240220c06f9707665f2e97dbbcb7f24fe84c0e8fbb5ce"
+  },
+  {
+    "path": "assets/student-portrait-prompt.txt",
+    "bytes": 1035,
+    "sha256": "b26868ae1446578c418e0ee014bd2c347999af27f3655a25961fc1846b23703a"
+  },
+  {
+    "path": "assets/student-portrait-provenance.json",
+    "bytes": 739,
+    "sha256": "4444f4d96309ddbb570a924c551721a88db654a1f59b4748165eb15dbacd206c"
+  },
+  {
+    "path": "assets/student-portrait.jpg",
+    "bytes": 275693,
+    "sha256": "227545d76a61206f766b4edb31ca4c2feb50b3ed5841dba0bef09d2f704409a3"
+  },
+  {
+    "path": "assets/studentwork/campus-reporting.jpg",
+    "bytes": 281948,
+    "sha256": "00fa15a8dcac98d35c8bc4c197c9ed8482cb47842b37fa03971543674e888998"
+  },
+  {
+    "path": "assets/studentwork/content-editing.jpg",
+    "bytes": 257319,
+    "sha256": "5789de0d1088386d948433a4ee41a830b42014d047db687c5c5de071f7e9f0df"
+  },
+  {
+    "path": "assets/studentwork/coordination.jpg",
+    "bytes": 201511,
+    "sha256": "4d91c6f71347bab5243ed8fad3a87c7767c02d205e227abbe69f9f014001b00a"
+  },
+  {
+    "path": "assets/studentwork/event-live.jpg",
+    "bytes": 168534,
+    "sha256": "86194f4627f69e12adf5df0180b1aae520c35a6a8aa1169bdd4f93df424e71e8"
+  },
+  {
+    "path": "assets/studentwork/event-prep.jpg",
+    "bytes": 242389,
+    "sha256": "b102d54ebb0537f6df25ff7542a2eda739c0a35e36783ee7a56d0dfe33906d49"
+  },
+  {
+    "path": "assets/studentwork/prompts.json",
+    "bytes": 6427,
+    "sha256": "596566dacb00370328661a7ac860003e8e0ebbec50c053660095caa8e1571ef9"
+  },
+  {
+    "path": "assets/studentwork/provenance.json",
+    "bytes": 2096,
+    "sha256": "1c51ec0eaa93c86fa895a868986edb4a6896b9ca1671aea91243a3d1a83bf364"
+  },
+  {
+    "path": "fonts/LXGWWenKai-Medium.ttf",
+    "bytes": 25379848,
+    "sha256": "d4bdeb38a39151d74d084cba5090f8cb7d20bf83eedb78c35939ae70b9f4e3f6"
+  },
+  {
+    "path": "fonts/LXGWWenKai-Regular.ttf",
+    "bytes": 25575676,
+    "sha256": "39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009"
+  },
+  {
+    "path": "fonts/MaShanZheng-Regular.ttf",
+    "bytes": 5857936,
+    "sha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb"
+  },
+  {
+    "path": "fonts/OFL-LXGWWenKai.txt",
+    "bytes": 5171,
+    "sha256": "1a25e35da1031c6c3436fde545bb9cb5aca954e9873afe510c834b8b79bd21a0"
+  },
+  {
+    "path": "fonts/OFL-MaShanZheng.txt",
+    "bytes": 4397,
+    "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08"
+  },
+  {
+    "path": "fonts/OFL-SourceHanSerif.txt",
+    "bytes": 4463,
+    "sha256": "9ff5bb567e1b92c801fc1069e5fbf992ff8efccacb9db94e5959a5b3ba9bb903"
+  },
+  {
+    "path": "fonts/SourceHanSerifCN-SemiBold.otf",
+    "bytes": 11771824,
+    "sha256": "50d3f12201ce2dd840650b6bfa47ebb8572ecf767eec0e5ccb20a247b5bfa805"
+  }
+]

@@ -1,0 +1,102 @@
+{
+  "assets": [
+    {
+      "path": "research-preparation.png",
+      "sha256": "468532b149f5771f1d686f4971165122f64f1eb6410fe2817d6ce03c326736b2",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "research-preparation",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "research-synthesis.png",
+      "sha256": "831ca34eb10b8b484c22d2212dd4781e8de9546b445470ee2e64575660390667",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "research-synthesis",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "community-support.png",
+      "sha256": "b44004da1ea50a7757b2ee9da3bdad94fc1c9b065c6a3bbf6d1b3849e60d6008",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "community-support",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "environment-cleanup.png",
+      "sha256": "96f0edba903a31a12a82fd950979afd2e3e25766f5a57c43d0eccad605d15042",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "environment-cleanup",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "campus-guidance.png",
+      "sha256": "ee8690c3e98e34d56f0c5dc34bafd6ed418e25aa93cfb1f677b935e2a31f1115",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "campus-guidance",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "science-outreach.png",
+      "sha256": "4f95a19b061447d1a2561b06c882aa3651c93a4a6a5c7ac030e7ccc3c7c89e70",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "science-outreach",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    },
+    {
+      "path": "library-service.png",
+      "sha256": "7958b46af638ceb61c6dff65fc2c5138a52557f2e85e122d17e70aa66e275279",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "generated_by": "built-in imagegen",
+      "prompt_key": "library-service",
+      "reference_images": [],
+      "fictional_scene": true,
+      "not_documentary_evidence": true,
+      "external_raster_editing": false
+    }
+  ]
+}
