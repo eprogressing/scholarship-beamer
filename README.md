@@ -6,8 +6,6 @@
 
 [下载源码](https://github.com/eprogressing/scholarship-beamer/releases/latest/download/scholarship-beamer-overleaf.zip) · [查看完整 PDF](https://github.com/eprogressing/scholarship-beamer/releases/latest/download/scholarship-beamer.pdf) · [换校教程](CUSTOMIZE.md) · [逐页填写指南](CONTENT_GUIDE.md)
 
-> 当前仓库为私有；Overleaf 一键导入将在源码附件公开后可用。
-
 ## 效果预览
 
 16:9 画幅，霞鹜文楷正文。封面保留校园建筑与渐变配色，正文提供个人介绍、科研图文、竞赛表格、证书墙和活动照片墙等版式。

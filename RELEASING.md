@@ -31,7 +31,7 @@ python3 scripts/package.py --pdf build/main/main.pdf
 
 ## Overleaf 按钮
 
-README 已预置以下首发链接，当前仍受顶部“当前仓库为私有”提示约束：
+README 使用以下版本附件地址：
 
 - 源码：`https://github.com/eprogressing/scholarship-beamer/releases/latest/download/scholarship-beamer-overleaf.zip`
 - PDF：`https://github.com/eprogressing/scholarship-beamer/releases/latest/download/scholarship-beamer.pdf`
@@ -39,6 +39,6 @@ README 已预置以下首发链接，当前仍受顶部“当前仓库为私有�
 
 这是 [Overleaf 官方提供的 ZIP 导入接口](https://www.overleaf.com/devs)，不要求先创建一个共享 Overleaf 模板。ZIP 必须能由 Overleaf 服务器通过公开 HTTP/HTTPS 地址读取；私有仓库的登录态或本机文件路径不能替代公开附件。不要将 GitHub 的附件预览页当成 ZIP 直链。
 
-首次公开发布时，检查以上 ZIP、PDF 两个地址无需登录即可下载、内容正确，再检查按钮的导入结果；完成后删除 README 顶部的“当前仓库为私有”一行。若仓库名称、附件文件名有变，同时更新下载链接和 Overleaf 的 `snip_uri`。不应在仍无公开附件时把按钮描述为已经可用。
+公开版本时，检查以上 ZIP、PDF 两个地址无需登录即可下载、内容正确，再检查按钮的导入结果。若仓库名称、附件文件名有变，同时更新下载链接和 Overleaf 的 `snip_uri`。不应在仍无公开附件时把按钮描述为已经可用；私有准备阶段应隐藏导入按钮，避免误点。
 
 若后续修改源码，重新构建、打包并更新预览。本文所列发布检查不构成自动公开或上传的授权。
